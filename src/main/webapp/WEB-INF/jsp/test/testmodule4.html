@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script></script>
+</head>
+<body>
+<script>
+    function AModule () {
+        var aa='aa';
+        var variables = ""
+        for (var name in this){
+
+            variables += name + "\n";
+            console.log('key is:', name, ' and val is:', this[name])
+        }
+//        return callback;
+    };
+
+    function BModule (callback) {
+        var aa='bb';
+
+        return callback;
+    };
+//
+
+//
+    var mode='A';
+    if(mode=='A'){
+        AModule();
+        console.log('aaa');
+        console.log(aa);
+
+    }else{
+        BModule();
+        console.log(aa);
+    }
+
+</script>
+</body>
+</html>

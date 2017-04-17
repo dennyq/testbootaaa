@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>player</title>
+
+    <link rel="stylesheet" type="text/css" href="./MediaCast.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!--<script type="text/javascript" src="./jquery.ajax-cross-origin.min.js"></script>-->
+    <script type="text/javascript" src="./MediaCastHtml5.js"></script>
+    <script type="text/javascript" src="./MediaCastTest.js"></script>
+    <!--<script type="text/javascript" src="/js/MediaCastTest.js"></script>-->
+    <!--<script type="text/javascript" src="/js/MediaCastPlayer.js"></script>-->
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="video_container" id="player_div" style="display:block;width:100%;height:100%;"> </div>
+<script type="text/javascript">
+    $(function(){
+        var option = {
+            'min':'N',
+            'useToken':'N',
+            'useProvider':'N',
+            'mode'          : 'html5',              //플레이어모드
+            'protocol'      : 'HTTP P/G',             //todo: 프로토콜
+            'skinType'		: 'default',  			//스킨타입
+            'src'			: 'http://auth.mediacast.co.kr/mov/demo.mp4',		    //file위치+file명
+            'width'			: '100%',				//너비
+            'height'		: '100%',				//높이
+            'continuity'	: 'N',					//이어보기
+            'lastPosition'	: 150, 					//이어보기 위치
+            'userId'		: 'user-1153',		//유저아이디
+            'autoplay'		: 'Y',		//자동재생
+            'security'	    : {
+                'on': 'N'
+            },
+//            'wartermark' : {
+//                'on': 'N',//'on': '${wartermarkOn}',
+//                'option'://워터마크
+//                {
+//                    'text'      : '${userId}',    //글자
+//                    'opactity'  : 0,				//투명도
+//                    'position'  : 'left-top',		//위치
+//                    'size'		: 30,				//사이즈
+//                    'font'	    : 'Tahoma',			//폰트
+//                    'colorCode'	: '0,0,255'			//색상코드
+//                }
+//            },
+
+//            "subtitle": {
+//                "on": '${subtitleOn}',
+//                "lang": '${subtitleLang}',
+//                "url": '${subtitleUrl}',
+//                "flashUrl": '${subtitleFlashUrl}'
+//            }
+        };
+
+        MCVideo.setUp(option);
+
+
+
+    });
+</script>
+</body>
+</html>

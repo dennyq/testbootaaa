@@ -1,0 +1,445 @@
+<!DOCTYPE html >
+
+<html >
+<head>
+    <title>Video events example</title>
+    <!-- Uncomment the following meta tag if you have issues rendering this page on an intranet or local site. -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"/> -->
+</head>
+<body >
+
+<div>
+    <label>Type or paste a video URL: <br/>
+        <input type="text" id="videoFile" style="width: 300px;"  title="video file input field" value="http://ie.microsoft.com/testdrive/ieblog/2011/nov/pp4_blog_demo.mp4" />
+        <button id="loadVideo" title="Load video button" >Load</button>
+    </label>
+</div>
+<video id="Video1" controls style="border: 1px solid blue;" height="240" width="320" title="video element">
+    HTML5 Video is required for this example
+</video>
+
+<div id="buttonbar" style="display: none; font-size:larger;")>
+    <button id="restart" title="Restart button">[]</button>
+    <button id="slower" title="Slower playback button">-</button>
+    <button id="rew" title="Rewind button" >&lt;&lt;</button>
+    <button id="play" title="Play button">&gt;</button>
+    <button id="fwd" title="Forward button" >&gt;&gt;</button>
+    <button id="faster" title="Faster playback button">+</button>
+    <button id="mute" title="Mute button" ><img alt="Volume on button" src="vol2.png" /></button>
+    <br />
+    <label>Reset playback rate: </label><button id="normal" title="Reset playback rate button">=</button>
+    <br />
+    <label>  Volume: </label>
+    <button id="volDn"  title="Volume down button">-</button>
+    <button id="volUp"  title="Volume up button">+</button>
+    <br />
+    <div id="status" >Length(seconds): <span id="vLen"></span> <br />
+        Current time:  <span id="curTime" title="Current time"></span><br />   Remaining time: <span id="vRemaining" title="Remaining time"></span></div>
+</div>
+<br/>
+
+<div title="Error message area" id="errorMsg" style="color:Red;"></div>
+<div title="Event status area" >
+    <label>oncanplaythrough: </label><span class="stats" id="cpt"></span><br />
+    <label>onloadstart: </label><span class="stats"  id="ls"></span><br />
+    <label>onprogress: </label><span class="stats"  id="pg"></span><br />
+    <label>onloadeddata: </label><span class="stats" id="ld"></span><br />
+    <label>onended: </label><span class="stats" id="ndd"></span><br />
+    <label>onemptied: </label><span class="stats" id="mt"></span><br />
+    <label>onstalled: </label><span class="stats" id="stall"></span><br />
+    <label>onwaiting: </label><span class="stats" id="waiting"></span><br />
+    <label>ondurationchange: </label><span class="stats" id="dc"></span><br />
+</div>
+
+<script>
+    var video = document.getElementById("Video1");
+    var vLength;
+    var pgFlag = ""; // used for progress tracking
+    if (video.canPlayType) {   // tests that we have HTML5 video support
+
+        //  video button helper functions
+        //  play video
+        function vidplay(evt) {
+            if (video.src == "") {  // inital source load
+                getVideo();
+            }
+            if (video.paused) {   // play the file, and display pause symbol
+                video.play();
+            } else {              // pause the file, and display play symbol  
+                video.pause();
+            }
+        }
+
+        //  load video file from input field
+        function getVideo() {
+            var fileURL = document.getElementById("videoFile").value; // get input field                    
+            if (fileURL != "") {
+                video.src = fileURL;
+                video.load();  // if HTML source element is used
+                document.getElementById("play").click();  // start play
+            } else {
+                errMessage("Enter a valid video URL");  // fail silently
+            }
+        }
+
+
+        //  button helper functions
+        //  skip forward, backward, or restart
+        function setTime(tValue) {
+            //  if no video is loaded, this throws an exception 
+            try {
+                if (tValue == 0) {
+                    video.currentTime = tValue;
+                }
+                else {
+                    video.currentTime += tValue;
+                }
+
+            } catch (err) {
+                // errMessage(err) // show exception
+                errMessage("Video content might not be loaded");
+            }
+        }
+
+        // change volume based on incoming value
+        function setVol(value) {
+            var vol = video.volume;
+            vol += value;
+            //  test for range 0 - 1 to avoid exceptions
+            if (vol >= 0 && vol <= 1) {
+                // if valid value, use it
+                video.volume = vol;
+            } else {
+                // otherwise substitute a 0 or 1
+                video.volume = (vol < 0) ? 0 : 1;
+            }
+        }
+        //  button events
+        //  Play
+        document.getElementById("play").addEventListener("click", vidplay, false);
+        //  Restart
+        document.getElementById("restart").addEventListener("click", function () {
+            setTime(0);
+        }, false);
+        //  Skip backward 10 seconds
+        document.getElementById("rew").addEventListener("click", function () {
+            setTime(-10);
+        }, false);
+        //  Skip forward 10 seconds
+        document.getElementById("fwd").addEventListener("click", function () {
+            setTime(10);
+        }, false);
+        //  set src == latest video file URL
+        document.getElementById("loadVideo").addEventListener("click", getVideo, false);
+
+        // volume buttons
+        document.getElementById("volDn").addEventListener("click", function () {
+            setVol(-.1); // down by 10%
+        }, false);
+        document.getElementById("volUp").addEventListener("click", function () {
+            setVol(.1);  // up by 10%
+        }, false);
+
+        // playback speed buttons
+        document.getElementById("slower").addEventListener("click", function () {
+            video.playbackRate -= .25;
+        }, false);
+        document.getElementById("faster").addEventListener("click", function () {
+            video.playbackRate += .25;
+        }, false);
+        document.getElementById("normal").addEventListener("click", function () {
+            video.playbackRate = 1;
+        }, false);
+        document.getElementById("mute").addEventListener("click", function (evt) {
+            if (video.muted) {
+                video.muted = false;
+            } else {
+                video.muted = true;
+            }
+        }, false);
+
+        //  any video error will fail with message
+        video.addEventListener("error", function (err) {
+            errMessage(err);
+        }, true);
+        // content has loaded, display buttons and set up events
+        video.addEventListener("canplay", function () {
+            document.getElementById("buttonbar").style.display = "block";
+        }, false);
+
+        //  display video duration when available
+        video.addEventListener("loadedmetadata", function () {
+            vLength = video.duration.toFixed(1);
+            document.getElementById("vLen").textContent = vLength; // global variable
+        }, false);
+
+        //  display the current and remaining times
+        video.addEventListener("timeupdate", function () {
+            //  Current time  
+            var vTime = video.currentTime;
+            document.getElementById("curTime").textContent = vTime.toFixed(1);
+            document.getElementById("vRemaining").textContent = (vLength - vTime).toFixed(1);
+        }, false);
+        //  paused and playing events to control buttons
+        video.addEventListener("pause", function () {
+            document.getElementById("play").textContent = ">";
+        }, false);
+
+        video.addEventListener("playing", function () {
+            document.getElementById("play").textContent = "||";
+        }, false);
+
+        video.addEventListener("volumechange", function () {
+            if (video.muted) {
+                // if muted, show mute image
+                document.getElementById("mute").innerHTML = "<img alt='volume off button' src='mute2.png' />";
+            } else {
+                // if not muted, show not muted image
+                document.getElementById("mute").innerHTML = "<img alt='volume on button' src='vol2.png' />";
+            }
+        }, false);
+        //  Download and playback status events.
+        video.addEventListener("loadstart", function () {
+            document.getElementById("ls").textContent = "Started";
+        }, false);
+        video.addEventListener("loadeddata", function () {
+            document.getElementById("ld").textContent = "Data was loaded";
+        }, false);
+
+        video.addEventListener("ended", function () {
+            document.getElementById("ndd").textContent = "Playback ended";
+        }, false);
+
+        video.addEventListener("emptied", function () {
+            document.getElementById("mt").textContent = "Video reset";
+        }, false);
+
+        video.addEventListener("stalled", function () {
+            document.getElementById("stall").textContent = "Download was stalled";
+        }, false);
+        video.addEventListener("waiting", function () {
+            document.getElementById("waiting").textContent = "Player waited for content";
+        }, false);
+        video.addEventListener("progress", function () {
+            pgFlag += "+";
+            if (pgFlag.length > 10) {
+                pgFlag = "+";
+            }
+            document.getElementById("pg").textContent = pgFlag;
+
+        }, false);
+        video.addEventListener("durationchange", function () {
+            document.getElementById("dc").textContent = "Duration has changed";
+        }, false);
+        video.addEventListener("canplaythrough", function () {
+            document.getElementById("cpt").textContent = "Ready to play whole video";
+        }, false);
+    } else {
+        errMessage("HTML5 Video is required for this example");
+        // end of runtime
+    }
+    //  display an error message
+    function errMessage(msg) {
+        // displays an error message for 5 seconds then clears it
+        document.getElementById("errorMsg").textContent = msg;
+        setTimeout("document.getElementById('errorMsg').textContent=''", 5000);
+    }
+</script>
+
+
+
+</body>
+</html>
+
+이름이나 익명의 함수를 사용하라(Use Named OR Anonymous Functions as Callbacks)
+
+위에서 본 jquery나 foreach함수의 예제에서 보았듯이 우리는 익명의 함수를 파라메터로 사용을 합니다. 이러한 방식이 가장 일반적인 패턴입니다. 또 다른 보편적인 방법으로는 함수를 정의해 해당 함수의 이름을 파라메터로 넘기는 방식입니다.
+
+var allUserData = [];
+
+// 콘솔에 결과를 찍는 함수
+function logStuff (userData) {
+if ( typeof userData === "string")
+{
+console.log(userData);
+}
+else if ( typeof userData === "object")
+{
+for (var item in userData) {
+console.log(item + ": " + userData[item]);
+}
+
+}
+
+}
+
+// 두 개의 인자를 받아서 마지막에 콜백함수를 호출한다.
+function getInput (options, callback) {
+allUserData.push (options);
+callback (options);
+
+}
+
+// getInput 함수를 호출할 때 , 우리는 logStuf이라는 함수의 이름을 인자로 넘긴다.
+// 그래서 logStuff 은 콜백함수가 되어 getInput이라는 함수의 내부에서 동작을 할것이다.
+getInput ({name:"Rich", speciality:"JavaScript"}, logStuff);
+//  name: Rich
+// speciality: JavaScript
+콜백함수로 파라매터 전달(Pass Parameters to Callback Functions)
+
+콜백함수가 실행이 될 때는 그냥 일반 함수와 동일하게 동작을 합니다. 그래서 우리는 콜백함수에 파라메터를 전달할 수가 있습니다. 우리는 파라메터로 콜백함수를 감싸고있는 함수 내부의 어떠한 프로퍼티라도 파라메터로 전달할 수가 있습니다. 아래의 예제를 실행하면 options 파라메터를 콜백함수에 전달할수 있습니다. 전역변수와 지역변수를 파라메터로 전달할 수 있습니다.
+
+//전역변수
+var generalLastName = "Clinton";
+
+function getInput (options, callback) {
+allUserData.push (options);
+// 전역변수를 콜백함수의 인자로 전달한다.
+callback (generalLastName, options);
+}
+콜백함수가 실행 되기 전에 함수임을 명확하게 하기(Make Sure Callback is a Function Before Executing It)
+
+콜백함수가 인자로 전달되어 함수의 내부에서 실행이 될 때 전달받은 인자가 함수인지를 명확하게 정의 하고 실행하는 것이 좋은 습관이다.
+위의 함수를 고쳐보겠습니다.
+
+function getInput(options, callback) {
+allUserData.push(options);
+
+// callback 이 함수 인지를 확인합니다.
+if (typeof callback === "function") {
+// callback 이 함수인지를 확인 했으니까 함수호출합니다.
+callback(options);
+}
+}
+만약에 이러한 확인 작업이 없다면 callback파라메터를 넘기지 않거나 혹은 함수가 아닌 값을 넘기게 되는 경우에는 실행중에 에러가 발생하는 문제가 일어납니다.
+
+this를 사용한 메서드를 콜백으로 사용시 문제 (Problem When Using Methods With The this Object as Callbacks)
+
+콜백함수가 this객체를 사용하는 메서드인 경우에는 우리는 반드시 this객체의 컨택스트를 보호할 수 있도록 콜백함수를 수정해야 합니다.
+예를들면 전역함수에 인자로 콜백함수가 전달된 경우에는 this객체가 window객체를 가리키게 만들거나 또는 콜백함수를 감싸고 있는 메서드를 가리키게 해야합니다.
+
+//객체를 생성합니다.
+// 다른 함수의 콜백함수로 전달한 메서드를 정의합니다.
+
+var clientData = {
+id: 094545,
+fullName: "Not Set",
+// setUserName clientData의 메서드입니다.
+setUserName: function (firstName, lastName)  {
+// this는 clientData라는 객체를 지칭하고 있습니다.
+this.fullName = firstName + " " + lastName;
+}
+}
+
+function getUserInput(firstName, lastName, callback  )  {
+
+// Do other stuff to validate firstName/lastName here
+
+// Now save the names
+callback (firstName, lastName);
+}
+
+getUserInput ("Barack", "Obama", clientData.setUserName);
+
+console.log (clientData.fullName);// 값에 설정되지 않음
+
+// fullName 프로퍼티가 window object의 인자로 세팅됨
+console.log (window.fullName); // Barack Obama
+이 코드예제에서 clientData내의 setUserName을 실행하면 예상과 달리 clientData내의 this.fullName 의 값으로 세팅이 되지 않습니다.
+대신에 window 오브젝트의 값으로 세팅이 되어버리는데 이는 getUserInput메서드가 글로벌 함수이기 때문이다. 이러한 일이 발생하는 원인은 this라는 객체가 window객체라는 글로벌한 객체를 가리키고있기 때문이다.
+이게 자바스크립트가 가진 문제점 중에 하나입니다. 작성자가 생각한 this가 때로는 의도치 않게 다른 객체로 나타나게 되는 경우가 있습니다.
+이러한 문제를 피하기 위해 jQuery에서는 $(this) 를 사용하거나 커피스크립트에서는 내부에서 처리를 해주고 있습니다.
+
+Call 과 Apply를 통한 this 보호 (Use the Call or Apply Function To Preserve this )
+
+우리는 Call과 Apply 함수를 통해 이러한 문제를 해결할 수 있습니다. 일단 모든 자바스크립트의 함수에는 Call 과 Apply라는 메서드를 가지고 있습니다. 그리고 이 함수들은 함수 내부에서 this객체를 유지하게 하고 인자들은 함수로 전달하는 역할을 합니다.
+Call함수는 항상 첫번째 인자로 this 객체를 사용합니다. 그리고 나머지 인자들은 콤마로 구분하여 보이지 않게 전달을 합니다.
+Apply 함수의 경우에도 첫번째 인자로 this객체를 사용합니다. 하지만 마지막 파라메터의 경우 값들이 배열형태로 존재합니다.
+이게 보면 말은 매우 복잡합니다. 하지만 코드를 통해 보시면 쉽게 이해가 될것입니다. 이전의 문제가 있었던 코드를 고쳐보겠습니다. 우리는 우선 Apply함수를 사용해보겠습니다.
+
+//callbackObj라는 파라메터를 추가했습니다.
+function getUserInput(firstName, lastName, callback, callbackObj)  {
+// Do other stuff to validate name here
+
+// 아래의 apply함수는 callbackObj에 this객체를 매핑합니다.
+callback.apply (callbackObj, [firstName, lastName]);
+}
+Apply함수를 통해 this 객체를 제대로 정의 할 것입니다. 우리는 이제 실제 getUserInput을 실행을 하면 제대로 clientData의 값을 세팅하는 것을 확인할수 있습니다.
+
+
+// 우리는 clientData.setUserName 메서드와 clientData 객체를 파라메터로 전달합니다. clientData객체는 Apply함수에의해 this 객체로 정의가 될 것입니다.  
+getUserInput ("Barack", "Obama", clientData.setUserName, clientData);
+
+// 제대로된 결과를 리턴합니다.
+console.log (clientData.fullName); // Barack Obama
+이러한 동작은 Call 함수를 통해서도 그대로 동작하게 될것입니다.
+
+6 .다중 콜백함수(Multiple Callback Functions Allowed)
+
+우리는 여러 개의 콜백함수를 파라매터를 전달할 수 있습니다. 아래의 코드는 전형적인 jquery의 ajax 함수 들입니다.
+
+function successCallback() {
+// Do stuff before send
+}
+
+function successCallback() {
+// Do stuff if success message received
+}
+
+function completeCallback() {
+// Do stuff upon completion
+}
+
+function errorCallback() {
+// Do stuff if error received
+}
+
+$.ajax({
+url:"http://fiddle.jshell.net/favicon.png",
+success:successCallback,
+complete:completeCallback,
+error:errorCallback
+
+});
+7. 콜백 지옥의 문제와 해결책 (Callback Hell” Problem And Solution)
+
+간단한 실행을 위한 비동기적인 코드는 가끔 수많은 콜백함수의 연속으로 이어지는 경우가 있습니다. 아래의 코드를 보시다시피 매우 지저분합니다. 이른바 콜백지옥입니다. 이러한 코드는 매우 가독성이 떨어집니다.
+아래의 코드의 경우 node-mongodb-native 에서 가져온 예제입니다.
+
+var p_client = new Db('integration_tests_20', new Server("127.0.0.1", 27017, {}), {'pk':CustomPKFactory});
+p_client.open(function(err, p_client) {
+p_client.dropDatabase(function(err, done) {
+p_client.createCollection('test_custom_key', function(err, collection) {
+collection.insert({'a':1}, function(err, docs) {
+collection.find({'_id':new ObjectID("aaaaaaaaaaaa")}, function(err, cursor) {
+cursor.toArray(function(err, items) {
+test.assertEquals(1, items.length);
+
+// Let's close the db
+p_client.close();
+});
+});
+});
+});
+});
+});
+이 함수를 간단하게 설명을 하면 우선 몽고디비 서버를 열어 해당 데이터 베이스의 내용들을 삭제를 시킵니다. 그리고 그 삭제된 데이터 베이스를 가지고 ‘test_custom_key’ 라는 이름의 컬렉션을 생성합니다. 생성된 컬랙션에 데이터를 삽입하고 “aaaaaaaaaa”라는 아이디를 가지는 값을 찾습니다. 이러한 처리가 끝이 나면 그 데이터를 처리하고 DB를 close 시킵니다.
+아마 이러한 코드를 여러분의 코드에서는 만나지 못할 수도 있습니다. 하지만 node.js 로 서버사이드를 처리하다 보면 의도치 않게 이러한 처리들을 하게 되는 경우가 빈번하게 있습니다.
+이러한 콜백지옥에서 탈출하기 위해 2가지 해결책이 있습니다.
+
+메인함수에서 익명의 함수 형태로 인자가 되어 전달되게 하지말고 함수에 이름을 줘서 변수화 시켜 그 함수의 이름을 인자로 전달을 시킵니다.
+모듈화를 시킵니다. 특정작업을 위한 모듈로 분리시켜 필요할 때 불러서 사용하는 형태로 만듭니다.
+  
+마지막로 정리를 하며 콜백함수를 사용할 때 주의사항을 말씀드리면
+코드를 중복하여 사용하는 형태를 피합니다.
+추상화를 제대로 시켜 더 일반적인 형태로 다양하게 사용될 수 있도록 만듭니다.(특정 형태가 아닌 제너럴한 형태로 만듭니다.)
+유지가 잘될 수 있도록 만듭니다.
+읽기 쉽게 만듭니다.
+함수는 더욱 특정화 시킵니다.
+이러한 주의사항을 지킨다면 콜백함수를 제대로 사용할 수 있을것입니다.
+실제 원문에는 자신만의 callback함수 만드는 내용이 있지만 개념을 설명하기에는 이걸로 충분할듯합니다. 역시 뭐든 제대로 알고 써야한다는 생각이 듭니다.
+
+
+
+
+출처: http://yubylab.tistory.com/entry/자바스크립트의-콜백함수-이해하기 [Yuby's Lab.]

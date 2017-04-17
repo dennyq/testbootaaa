@@ -1,0 +1,34 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+/*body { padding:0;margin:0;width:100%;height:100%;overflow-x:hidden; overflow-y:hidden; }*/
+.video_container{display:block;width:100%;height:100%;}
+body { padding:0;margin:0;width:100%;height:100%;overflow-x:hidden; overflow-y:hidden; font-family: 'Nanum Gothic', serif;}
+#playlist {
+    display: table;
+    background: #121212;
+    width: 200px;
+    height: 100%;
+}
+#playlist li {
+    display: inline;
+    list-style: none;
+    text-align: center;
+}
+#playlist li a {
+    background: none;
+    text-decoration: none;
+    position:relative;
+}
+#playlist li img { width:100px; }
+#playlist li a { opacity: .5; transition: 1s opacity; }
+#playlist li a:hover, #playlist li a:focus, #playlist li a.currentvid { opacity: 1; }
+.right-list{
+    width: 25%;
+    height: 100%;
+    /* float: right; */
+    background: black;
+    z-index: 9999;
+    position: fixed;
+    margin-left: 75%;
+    margin-top: 0 !important;
+
+}

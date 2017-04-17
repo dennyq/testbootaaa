@@ -1,0 +1,87 @@
+spring:
+  profiles.active: dev
+---
+spring:
+    profiles: dev
+    application:
+        name: provider
+    mvc:
+        view:
+            prefix: /WEB-INF/jsp/
+            suffix: .jsp
+
+    devtools:
+        livereload:
+            enable: true
+
+logging:
+    file: logs/dev_app.log
+    pattern:
+#        console: "%d %-5level %logger : %msg%n"
+        console: "[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n"
+        file: "%d %-5level [%thread] %logger : %msg%n"
+    level:
+        org.springframework.web: DEBUG
+        com.bbmc: INFO
+        org.springframework.core: DEBUG
+        org.springframework.beans: DEBUG
+        org.springframework.context: DEBUG
+
+server:
+    port: 80
+---
+spring:
+    profiles: production
+    application:
+        name: provider
+    mvc:
+        view:
+            prefix: /WEB-INF/jsp/
+            suffix: .jsp
+    devtools:
+          livereload:
+              enable: true
+logging:
+    file: /logs/production_app.log
+    pattern:
+        console: "%d %-5level %logger : %msg%n"
+        file: "%d %-5level [%thread] %logger{0} : %msg%n"
+    level:
+        org.springframework.web: WARN
+
+server:
+    port: 80
+
+
+
+
+
+#endpoints.shutdown.enabled: true
+
+
+
+#spring:
+#  profiles.active: dev
+#---
+#spring:
+#  profiles: dev
+#logging:
+#  file: logs/dev_app.log
+#  pattern:
+#    console: "%d %-5level %logger : %msg%n"
+#    file: "%d %-5level [%thread] %logger : %msg%n"
+#  level:
+#    org.springframework.web: DEBUG
+#    guru.springframework.controllers: DEBUG
+#    org.hibernate: DEBUG
+#---
+#spring:
+#  profiles: production
+#logging:
+#  file: logs/production_app.log
+#  pattern:
+#    file: "%d %-5level [%thread] %logger{0} : %msg%n"
+#  level:
+#    org.springframework.web: WARN
+#    guru.springframework.controllers: WARN
+#    org.hibernate: WARN

@@ -1,0 +1,191 @@
+﻿
+
+/*개발스크립트, 제어요소*/
+.mc-hide{ display: none }
+.mc-show{ display: block }
+.mc-underline{ text-decoration:underline }
+.mc-selected{ color:#e60012 !important;cursor:default!important;}
+.mc-guide{ display: none }
+.mc-guide-img{ display: none }
+.mc-guide-box{ width: 100%; }
+/*포지션정확도를 위한 css, todo:  나중에 지움*/
+.bottom .timeline .timeline-bookmark .bookmark-arrow { z-index: 100!important; }
+.bottom .timeline .timeline-bar .timeline-bar-cursor { border: 1px solid green; background: none; }
+/*.bottom .timeline .timeline-bar .bar-cursor {*/
+/*/!*width: 20px;*!/*/
+/*/!*height: 20px;*!/*/
+/*/!*left: -10px;*!/*/
+/*/!*top: -8px;*!/*/
+/*z-index: -1!important;*/
+/*background: #0a00ff;*/
+/*/!*-moz-border-radius: 10px;*!/*/
+/*/!*-webkit-border-radius: 10px;*!/*/
+/*/!*border-radius: 10px;*!/*/
+/*/!*position: absolute;*!/*/
+/*/!*cursor: pointer;*!/*/
+/*}*/
+/*.bottom .timeline .timeline-bar .bar-current {*/
+/*/!*width: 50%;*!/*/
+/*/!*height: 4px;*!/*/
+/*/!*background: #e60012;*!/*/
+/*/!*position: absolute;*!/*/
+/*z-index: 9999 !important;*/
+/*}*/
+/*.bottom .timeline .timeline-bar .bar-cursor {*/
+/*border: 1px solid green;*/
+/*background: none;*/
+/*}*/
+.bottom .control .control-right li.control-repeat-on0 {width:22px;background:url('../_images/pc/control-repeat-on0.png') center center no-repeat;cursor:pointer;}
+/*.bottom .control .control-right li.control-repeat-on0:hover {background:url('../_images/pc/control-repeat1-over.png') center center no-repeat;}*/
+.bottom .control .control-right li.control-repeat-on1 {width:21px;background:url('../_images/pc/control-repeat-on1.png') center center no-repeat;cursor:pointer;}
+/*.bottom .control .control-right li.control-repeat-on1:hover {background:url('../_images/pc/control-repeat2-over.png') center center no-repeat;}*/
+.bottom .control .control-right li.control-repeat-on2 {width:21px;background:url('../_images/pc/control-repeat-on2.png') center center no-repeat;cursor:pointer;}
+/*.bottom .control .control-right li.control-repeat-on2:hover {background:url('../_images/pc/control-repeat2-over.png') center center no-repeat;}*/
+
+/*/!*구간반복핀*!/*/
+/*/!*<div class="pin-marker">*!/*/
+/*/!*<div class="marker-begin"></div>*!/*/
+/*/!*<div class="marker-end"></div>*!/*/
+/*/!*</div>*!/*/
+/*.bottom .timeline .pin-marker {width:100%;height:12px;position:absolute;top:0;left:0;}*/
+/*.bottom .timeline .pin-marker .marker-begin {width:14px;height:12px;background:url('../_images/pc/marker-begin.png') no-repeat;left:50px;top:0;position:absolute;cursor:pointer;}*/
+/*.bottom .timeline .pin-marker .marker-begin:hover {background:url('../_images/pc/marker-begin-over.png') no-repeat;}*/
+/*.bottom .timeline .pin-marker .marker-end {width:14px;height:12px;background:url('../_images/pc/marker-end.png') no-repeat;left:150px;top:0;position:absolute;cursor:pointer;}*/
+/*.bottom .timeline .pin-marker .marker-end:hover {background:url('../_images/pc/marker-end-over.png') no-repeat;}*/
+/*/!*디자인이 움찔거려서 수정*!/*/
+/*.bottom .control .control-left li, .bottom .control .control-right li { min-width: 26px; }*/
+/*.popup .speed { width: 250px; }*/
+/*.bottom .timeline .timeline-bar .bar-current {*/
+/*width: 0;*/
+
+/*}*/
+/*/!*개발적요소인지 디자인적요소인지 구분*!/*/
+.mc-alert { width: 100%; position: absolute; display: none; width: 100%; top: 50%; padding: 0px; z-index: 100; }
+/*.mc-bmrk-pin{*/
+/*z-index: 100;*/
+/*}*/
+
+/*.center .control { margin-top: 30%; }*/
+.mc-volume.mc-volume-show.volume-bar{ margin-left: -10px; margin-right :15px; }
+/*.bottom .control .control-left li.control-volume-on,.bottom .control .control-left li.control-volume-off {*/
+    /*width: 38px!important;*/
+    /*margin-right: 0px!important;*/
+    /*/!*background: url(../_images/pc/control-volume-on.png) left center no-repeat;*!/*/
+    /*/!*cursor: pointer;*!/*/
+/*}*/
+.bottom .timeline .timeline-speed { width: 250px; }
+/*.mc-bmrk-prev, .mc-bmrk-next{cursor:pointer}*/
+.bottom .timeline .timeline-bar .timeline-bar-current {
+    width: 0;
+
+}
+
+
+/*.bottom .config .container {*/
+/*width: 180px;*/
+/*background: url(../_images/pc/back_popup.png);*/
+/*font-size: 12px;*/
+/*bottom: 6px;*/
+/*right: 0;*/
+/*position: absolute;*/
+/*}*/
+
+
+.player { background: none; }
+.bottom .control .control-left li.control-pause {display:block;}
+.bottom .control .control-left li.control-stop {display:block;}
+.bottom .control .control-left li.control-volume-off {display:block;}
+.bottom .control .control-left li.control-repeat {display:block;}
+.bottom .control .control-left li.control-repeat-end {display:block;}
+.bottom .control .control-left li.control-play-prev {isplay:block;}
+.bottom .control .control-left li.control-rw {isplay:block;}
+.bottom .control .control-left li.control-play {isplay:block;}
+.bottom .control .control-left li.control-pause {isplay:block;}
+.bottom .control .control-left li.control-stop {isplay:block;}
+.bottom .control .control-left li.control-ff {isplay:block;}
+.bottom .control .control-left li.control-play-next {isplay:block;}
+.bottom .control .control-left li.control-volume-on {isplay:block;}
+.bottom .control .time {isplay:block;}
+
+
+/*.bottom .control .volume-bar {display:block;}*/
+
+.bottom .control .control-right li.control-repeat-end {display:block;}
+.bottom .control .control-right li.control-fullscreen-on {display:block;}
+.bottom .control .control-right li.control-caption {isplay:block;}
+.bottom .control .control-right li.control-bookmark {isplay:block;}
+.bottom .control .control-right li.control-config {isplay:block;}
+.bottom .control .control-right li.control-repeat {isplay:block;}
+.bottom .control .control-right li.control-speed {isplay:block;}
+
+
+
+
+
+/*.speed {display:block;}*/
+/*.control-pause-center {display:block;}*/
+/*.bookmark {display:block;}*/
+/*.bottom .timeline .timeline-preview {display:block;}*/
+/*.bottom .timeline .timeline-caption {display:block;}*/
+/*.bottom .timeline .timeline-bookmark .bookmark-arrow {display:block;}*/
+/*.bottom .timeline .timeline-repeat .repeat-arrow-begin {display:block;}*/
+/*.bottom .timeline .timeline-repeat .repeat-arrow-end {display:block;}*/
+/*.bottom .timeline .timeline-speed {display:block;}*/
+/*.bottom .timeline .timeline-tip {display:block;}*/
+/*.bottom .control .control-left li.control-pause {display:block;}*/
+/*.bottom .control .control-left li.control-stop {display:block;}*/
+/*.bottom .control .control-left li.control-volume-off {display:block;}*/
+/*.bottom .control .control-left li.control-repeat {display:block;}*/
+/*.bottom .control .control-left li.control-repeat-end {display:block;}*/
+/*.bottom .control .control-left li.control-play-prev {isplay:block;}*/
+/*.bottom .control .control-left li.control-rw {isplay:block;}*/
+/*.bottom .control .control-left li.control-play {isplay:block;}*/
+/*.bottom .control .control-left li.control-pause {isplay:block;}*/
+/*.bottom .control .control-left li.control-stop {isplay:block;}*/
+/*.bottom .control .control-left li.control-ff {isplay:block;}*/
+/*.bottom .control .control-left li.control-play-next {isplay:block;}*/
+/*.bottom .control .control-left li.control-volume-on {isplay:block;}*/
+/*.bottom .control .time {isplay:block;}*/
+/*.bottom .control .control-center {display:block;}*/
+/*.bottom .control .control-center li.control-pause {display:block;}*/
+/*.bottom .control .control-center li.control-stop {display:block;}*/
+/*.bottom .control .control-center li.control-volume-on {isplay:block;}*/
+/*.bottom .control .time {isplay:block;}*/
+/*.bottom .control .volume-bar {isplay:block;}*/
+/*.bottom .control .control-right li.control-repeat-end {display:block;}*/
+/*.bottom .control .control-right li.control-fullscreen-on {display:block;}*/
+/*.bottom .control .control-right li.control-caption {isplay:block;}*/
+/*.bottom .control .control-right li.control-bookmark {isplay:block;}*/
+/*.bottom .control .control-right li.control-config {isplay:block;}*/
+/*.bottom .control .control-right li.control-repeat {isplay:block;}*/
+/*.bottom .control .control-right li.control-speed {isplay:block;}*/
+/*.bottom .config {display:block;}*/
+.bottom .config .container li .sub-title {
+    width: 40px;
+    margin-left: 15px;
+    color: #878c90;
+    float: left;
+}
+
+.bottom .config .container .title-sub {
+    width: 160px;
+    height: 30px;
+    /*margin-top: 12px;*/
+    /*margin-left: 12px;*/
+    background: url('../_images/pc/control-prev.png') no-repeat left center;
+    color: #ffffff;
+    text-align: center;
+    line-height: 30px;
+    float: left;
+    cursor: pointer;
+}
+.bottom .config .container li .property {
+    /*width: 40px;*/
+    /*margin-left: 15px;*/
+    /*color: #878c90;*/
+    /*float: left;*/
+    display: none;
+}
+.mc-bmrk-next, .mc-bmrk-prev{
+    cursor: pointer;
+}

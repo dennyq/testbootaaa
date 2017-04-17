@@ -1,0 +1,275 @@
+
+<!doctype html>
+<html>
+<head>
+<title>Playlist</title>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="user-scalable=no,width=1280,target-densitydpi=device-dpi">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+</head>
+<link rel="stylesheet" href="css/style.css" media="all" type="text/css">
+
+<script language='javascript' type='text/javascript'>
+
+function vh(nm)
+{
+	if (event)
+	{
+		event.preventDefault();
+		event.stopPropagation();
+	}
+    var obj = nm;
+    if(typeof nm == 'string') obj = document.getElementById(nm);
+    if(obj.style.display == 'block')
+    {
+        obj.style.display = 'none';
+    }
+    else
+    {
+        obj.style.display = 'block';
+    }
+}
+
+function toggle_img_src( name, src_a, src_b )
+{
+     var img = eval('document.' + name);
+     if( img.length == 0 ) return;
+     if ( img.src.indexOf( src_a ) >= 0 )
+     {
+         img.src = src_b;
+         return;
+     }
+
+     if ( img.src.indexOf( src_b ) >= 0 )
+     {
+         img.src = src_a; 
+         return;
+     }
+     return;
+}
+
+</script>
+
+
+<body>
+
+
+<div style="height:70px"></div>
+
+<table width=1070 height=360 cellpadding=0 cellspacing=0 border=0 align=center id="player_area">
+ 	<tr>
+		<td width=640 bgcolor="#000000" valign=top>
+
+		<!-- 플레이어 영역 시작 -->
+		<img src="images/player_sample.jpg" width=640 title="플레이어 임베드 영역">
+		<!-- 플레이어 영역 끝 -->
+
+		</td>
+		<td width=430 valign=top>
+
+<!-- 플레이리스트 시작 -->
+
+<div id="playlist">
+
+<!-- 리스트 타이틀 시작 -->
+<table width=100% height=65 cellpadding=0 cellspacing=0 border=0>
+ 	<tr>
+		<td class="playlist_title" align=left>내가 좋아하는 영화들</td>
+	</tr>
+ 	<tr>
+		<td class="playlist_count" align=left>01/12 videos</td>
+	</tr>
+</table>
+<!-- 리스트 타이틀 끝 -->
+
+<!-- 리스트 옵션메뉴 시작 -->
+<div id="menu">
+
+<table width=100% height=35 cellpadding=0 cellspacing=0 border=0 class="playlist_menu">
+	<tr>
+		<td width=40 onMouseOver='vh("guide_repeat")' onMouseOut='vh("guide_repeat")'>
+		<img src="images/btn_repeat.png" width=40 name="toggle_r" OnClick="toggle_img_src('toggle_r', 'images/btn_repeat.png', 'images/btn_repeat_f.png');" class="img_button"></td>
+		<td width=40 onMouseOver='vh("guide_shuffle")' onMouseOut='vh("guide_shuffle")'><img src="images/btn_shuffle.png" width=40 name="toggle_s"  OnClick="toggle_img_src('toggle_s', 'images/btn_shuffle.png', 'images/btn_shuffle_f.png');" class="img_button">
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+
+<!-- Repeat 가이드 시작 -->
+<div id="guide_repeat" style="display:none">
+<div style="position:absolute;top:105px;margin-left:7px">
+<table cellpadding=0 cellspacing=0 border=0 class="guide_box">
+	<tr><td>Repeat</td></tr></table>
+<div align=center><img src="images/pin.png" height=7></div>
+</div>
+</div>
+<!-- Repeat  가이드 끝 -->
+
+<!-- Shuffle 가이드 시작 -->
+<div id="guide_shuffle" style="display:none;">
+<div style="position:absolute;top:105px;margin-left:45px">
+<table cellpadding=0 cellspacing=0 border=0 class="guide_box">
+	<tr><td>Shuffle</td></tr></table>
+<div align=center><img src="images/pin.png" height=7></div>
+</div>
+</div>
+<!-- Shuffle 가이드 끝 -->
+
+</div>
+<!-- 리스트 옵션메뉴 끝 -->
+
+
+
+<!-- 리스트 목록 시작 -->
+<div id="playlist_item">
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_on" onClick="#">
+	<tr>
+		<td width=40 align=center valign=center class="icon_play_on"><font class="video_number_on">01</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_06.jpg" width=72 class="play_on"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">더 마션 (2015)</font><br>
+		<font class="video_sub_text">리들리 스콧</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">02</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_01.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">어벤저스: 에이지 오브 울트론 (2016)</font><br>
+		<font class="video_sub_text">조스 웨돈</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">03</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_02.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">Fifty Shades of Grey (2014)</font><br>
+		<font class="video_sub_text">Sam Taylor-Johnson</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">04</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_04.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">Star Wars : The Force Awakens (2016)</font><br>
+		<font class="video_sub_text">J.J. Abrams</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">05</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_06.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">The Martian (2015)</font><br>
+		<font class="video_sub_text">Ridley Scott</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">06</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_01.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">The Avengers: Age of Ultron (2016)</font><br>
+		<font class="video_sub_text">Joss Whedon</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">07</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_02.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">Fifty Shades of Grey (2014)</font><br>
+		<font class="video_sub_text">Sam Taylor-Johnson</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">08</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_04.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">Star Wars : The Force Awakens (2016)</font><br>
+		<font class="video_sub_text">J.J. Abrams</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">09</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_06.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">The Martian (2015)</font><br>
+		<font class="video_sub_text">Ridley Scott</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">10</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_01.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">The Avengers: Age of Ultron (2016)</font><br>
+		<font class="video_sub_text">Joss Whedon</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">11</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_02.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">Fifty Shades of Grey (2014)</font><br>
+		<font class="video_sub_text">Sam Taylor-Johnson</font>
+		</td>
+	</tr>
+</table>
+
+<table width=100% height=60 cellpadding=0 cellspacing=0 border=0 class="video_list_off" onClick="#">
+	<tr>
+		<td	width=40 align=center valign=center><font class="video_number_off">12</font></td>
+		<td	width=72 align=center valign=center><img src="images/sample_04.jpg" width=72 class="play_off"></td>
+		<td style="padding-left:15px" align=left>
+		<font class="video_title">Star Wars : The Force Awakens (2016)</font><br>
+		<font class="video_sub_text">J.J. Abrams</font>
+		</td>
+	</tr>
+</table>
+
+
+</div>
+<!-- 리스트 목록 끝 -->
+
+</div>
+<!-- 플레이리스트 끝 -->
+
+		</td>
+	</tr>
+</table>
+
+
+
+
+</body>
+</html>

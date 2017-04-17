@@ -1,0 +1,174 @@
+/* 태그 */
+div,p,dl,dt,dd,table,th,td,form,fieldset,address,h1,h2,h3,h4,h5,h6,ul,ol,li {margin:0;padding:0;}
+img,iframe {border:0;}
+button,input,textarea,select {margin:0;padding:0;border:0;}
+
+.player {width:100%;min-width:720px;height:100%;background:#000000;top:0;left:0;position:absolute;}
+
+.skin-red {color:#e60012;}
+.skin-blue {color:#00a1e9;}
+
+
+
+/* 비디오 */
+.video {width:100%;height:100%;background:#000000;top:0;left:0;position:absolute;}
+
+
+
+/* 상단 */
+.top {width:100%;height:100px;background:url('../_images/pc/back_top.png') repeat-x;top:0;left:0;position:absolute;}
+.top .title {width:96%;margin:0 auto;margin-top:20px;color:#ffffff;font-size:24px;}
+.top .title .control-config {width:32px;height:32px;background:url('../_images/mobile/control-config.png') center center no-repeat;float:right;cursor:pointer;display:none;}
+.top .title .control-config:hover {background:url('../_images/mobile/control-config-over.png') center center no-repeat;}
+
+
+
+
+
+/* 중앙 */
+.speed {width:60px;height:200px;margin-top:-100px;margin-left:20px;background:url('/_images/mobile/back_transparent.png');-moz-border-radius:20px;-webkit-border-radius:20px;border-radius:20px;float:left;top:50%;position:absolute;display:none;}
+.speed .control-up {width:60px;height:60px;margin-top:10px;background:url('../_images/mobile/control-up.png') center center no-repeat;float:left;cursor:pointer;}
+.speed .control-up:hover {background:url('../_images/mobile/control-up-over.png') center center no-repeat;}
+.speed .control-down {width:60px;height:60px;background:url('../_images/mobile/control-down.png') center center no-repeat;float:left;cursor:pointer;}
+.speed .control-down:hover {background:url('../_images/mobile/control-down-over.png') center center no-repeat;}
+.speed .speed-text {width:60px;height:60px;color:#ffffff;text-align:center;float:left;cursor:pointer;display:table;}
+.speed .speed-text .speed-text-container {height:100%;display:table-cell;vertical-align: middle;}
+
+.control-play-center {width:120px;height:120px;margin-top:-60px;margin-left:-60px;background:url('../_images/pc/control-play-center.png') center center no-repeat;position:absolute;top:50%;left:50%;cursor:pointer;}
+.control-play-center:hover {background:url('../_images/pc/control-play-center-over.png') center center no-repeat;}
+.control-pause-center {width:120px;height:120px;margin-top:-60px;margin-left:-60px;background:url('../_images/pc/control-pause-center.png') center center no-repeat;position:absolute;top:50%;left:50%;cursor:pointer;display:none;}
+.control-pause-center:hover {background:url('../_images/pc/control-pause-center-over.png') center center no-repeat;}
+
+.bookmark {width:60px;height:200px;margin-top:-100px;margin-right:20px;background:url('/_images/mobile/back_transparent.png');-moz-border-radius:20px;-webkit-border-radius:20px;border-radius:20px;float:right;top:50%;right:0;position:absolute;display:none;}
+.bookmark .control-prev {width:60px;height:60px;margin-top:10px;background:url('../_images/mobile/control-prev.png') center center no-repeat;float:left;cursor:pointer;}
+.bookmark .control-prev:hover {background:url('../_images/mobile/control-prev-over.png') center center no-repeat;}
+.bookmark .control-next {width:60px;height:60px;background:url('../_images/mobile/control-next.png') center center no-repeat;float:left;cursor:pointer;}
+.bookmark .control-next:hover {background:url('../_images/mobile/control-next-over.png') center center no-repeat;}
+.bookmark .control-bookmark {width:60px;height:60px;background:url('../_images/mobile/control-bookmark.png') center center no-repeat;float:left;cursor:pointer;}
+.bookmark .control-bookmark:hover {background:url('../_images/mobile/control-bookmark-over.png') center center no-repeat;}
+.bookmark .control-bookmark-list {width:60px;height:60px;background:url('../_images/mobile/control-bookmark-list.png') center center no-repeat;float:left;cursor:pointer;top:72px;left:-60px;position:absolute;}
+.bookmark .control-bookmark-list:hover {background:url('../_images/mobile/control-bookmark-list-over.png') center center no-repeat;}
+
+
+
+/* 하단 */
+.bottom {width:100%;height:80px;background:url('../_images/pc/back_bottom.png') repeat-x;bottom:0;left:0;position:absolute;}
+
+.bottom .timeline {width:96%;margin:0 auto;position:relative;}
+
+
+.bottom .timeline .timeline-preview {width:166px;height:120px;background:url('../_images/pc/back-timeline-preview.png');top:-120px;left:400px;position:absolute;display:none;}
+.bottom .timeline .timeline-preview img {margin-top:3px;margin-left:3px;}
+.bottom .timeline .timeline-preview .preview-text {width:100%;color:#ffffff;font-size:14px;font-family:Tahoma;text-align:center;}
+
+.bottom .timeline .timeline-caption {width:100%;bottom:10px;position:absolute;display:none;}
+.bottom .timeline .timeline-caption .container {width:auto;margin:0 auto;padding-top:20px;padding-bottom:20px;background:url('../_images/pc/back_popup.png');color:#ffffff;text-align:center;}
+
+.bottom .timeline .timeline-bookmark {width:100%;height:12px;position:absolute;top:0;left:0;}
+.bottom .timeline .timeline-bookmark .bookmark-arrow {width:14px;height:12px;background:url('../_images/pc/bookmark-arrow.png') no-repeat;left:100px;top:0;position:absolute;cursor:pointer;display:none;}
+
+.bottom .timeline .timeline-repeat {width:100%;height:22px;position:absolute;bottom:2px;left:0;}
+.bottom .timeline .timeline-repeat .repeat-arrow-begin {width:14px;height:22px;background:url('../_images/pc/repeat-arrow-begin.png') no-repeat;left:200px;top:0;position:absolute;cursor:pointer;display:none;}
+.bottom .timeline .timeline-repeat .repeat-arrow-end {width:14px;height:22px;background:url('../_images/pc/repeat-arrow-end.png') no-repeat;left:300px;top:0;position:absolute;cursor:pointer;display:none;}
+
+.bottom .timeline .timeline-bar {width:100%;height:12px;position:absolute;top:12px;left:0;position:relative;}
+.bottom .timeline .timeline-bar .timeline-bar-total {width:100%;height:4px;background:#ffffff;position:absolute;}
+.bottom .timeline .timeline-bar .timeline-bar-loaded {width:60%;height:4px;background:#c1c1c1;position:absolute;}
+.bottom .timeline .timeline-bar .timeline-bar-current {width:50%;height:4px;background:#e60012;position:absolute;}
+.bottom .timeline .timeline-bar .timeline-bar-area {width:100%;height:4px;position:absolute;cursor:pointer;}
+.bottom .timeline .timeline-bar .timeline-bar-cursor {width:20px;height:20px;left:-10px;top:-8px;background:url('../_images/pc/cursor.png') center center no-repeat;position:absolute;cursor:pointer;}
+
+.bottom .timeline .timeline-speed {width:220px;height:32px;background:#000000;-moz-border-radius:10px;-webkit-border-radius:5px;border-radius:5px;bottom:-11px;right:85px;position:absolute;display:none;}
+.bottom .timeline .timeline-speed ul {margin-top:8px;margin-left:10px;list-style:none;}
+.bottom .timeline .timeline-speed li {width:20px;margin-right:10px;color:#ffffff;font-size:12px;font-weight:bold;text-align:center;float:left;cursor:pointer;}
+.bottom .timeline .timeline-speed li.selected {color:#e60012;cursor:default;}
+
+.bottom .timeline .timeline-tip {padding:10px;background:#000000;color:#ffffff;font-size:12px;-moz-border-radius:10px;-webkit-border-radius:5px;border-radius:5px;bottom:-15px;left:0;position:absolute;display:none;}
+
+
+
+.bottom .control {width:96%;margin:0 auto;margin-top:10px;position:relative;}
+
+.bottom .control .control-left {margin-right:10px;float:left;}
+.bottom .control .control-left ul {list-style:none;}
+.bottom .control .control-left li {height:48px;margin-right:15px;float:left;}
+.bottom .control .control-left li.control-play-prev {width:27px;background:url('../_images/pc/control-play-prev.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-left li.control-play-prev:hover {background:url('../_images/pc/control-play-prev-over.png') center center no-repeat;}
+.bottom .control .control-left li.control-rw {width:27px;background:url('../_images/pc/control-rw.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-left li.control-rw:hover {background:url('../_images/pc/control-rw-over.png') center center no-repeat;}
+.bottom .control .control-left li.control-play {width:14px;background:url('../_images/pc/control-play.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-left li.control-play:hover {background:url('../_images/pc/control-play-over.png') center center no-repeat;}
+.bottom .control .control-left li.control-pause {width:14px;background:url('../_images/pc/control-pause.png') center center no-repeat;cursor:pointer;display:none;}
+.bottom .control .control-left li.control-pause:hover {background:url('../_images/pc/control-pause-over.png') center center no-repeat;}
+.bottom .control .control-left li.control-stop {width:16px;background:url('../_images/pc/control-stop.png') center center no-repeat;cursor:pointer;display:none;}
+.bottom .control .control-left li.control-stop:hover {background:url('../_images/pc/control-stop-over.png') center center no-repeat;}
+.bottom .control .control-left li.control-ff {width:27px;background:url('../_images/pc/control-ff.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-left li.control-ff:hover {background:url('../_images/pc/control-ff-over.png') center center no-repeat;}
+.bottom .control .control-left li.control-play-next {width:26px;background:url('../_images/pc/control-play-next.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-left li.control-play-next:hover {background:url('../_images/pc/control-play-next-over.png') center center no-repeat;}
+.bottom .control .control-left li.control-volume-on {width:23px;background:url('../_images/pc/control-volume-on.png') left center no-repeat;cursor:pointer;}
+.bottom .control .control-left li.control-volume-on:hover {background:url('../_images/pc/control-volume-on-over.png') left center no-repeat;}
+.bottom .control .control-left li.control-volume-off {width:23px;background:url('../_images/pc/control-volume-off.png') left center no-repeat;cursor:pointer;display:none;}
+.bottom .control .control-left li.control-volume-off:hover {background:url('../_images/pc/control-volume-off-over.png') left center no-repeat;}
+.bottom .control .control-left li.control-repeat {width:21px;background:url('../_images/pc/control-repeat.png') center center no-repeat;cursor:pointer;display:none;}
+.bottom .control .control-left li.control-repeat-begin {width:21px;background:url('../_images/pc/control-repeat-begin.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-left li.control-repeat-end {width:21px;background:url('../_images/pc/control-repeat-end.png') center center no-repeat;cursor:pointer;display:none;}
+
+.bottom .control .control-center {margin-left:-100px;left:50%;position:absolute;display:none;}
+.bottom .control .control-center ul {list-style:none;}
+.bottom .control .control-center li {height:48px;margin-left:8px;margin-right:8px;float:left;}
+.bottom .control .control-center li.control-play-prev {width:27px;background:url('../_images/pc/control-play-prev.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-center li.control-play-prev:hover {background:url('../_images/pc/control-play-prev-over.png') center center no-repeat;}
+.bottom .control .control-center li.control-rw {width:27px;background:url('../_images/pc/control-rw.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-center li.control-rw:hover {background:url('../_images/pc/control-rw-over.png') center center no-repeat;}
+.bottom .control .control-center li.control-play {width:14px;background:url('../_images/pc/control-play.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-center li.control-play:hover {background:url('../_images/pc/control-play-over.png') center center no-repeat;}
+.bottom .control .control-center li.control-pause {width:14px;background:url('../_images/pc/control-pause.png') center center no-repeat;cursor:pointer;display:none;}
+.bottom .control .control-center li.control-pause:hover {background:url('../_images/pc/control-pause-over.png') center center no-repeat;}
+.bottom .control .control-center li.control-stop {width:16px;background:url('../_images/pc/control-stop.png') center center no-repeat;cursor:pointer;display:none;}
+.bottom .control .control-center li.control-stop:hover {background:url('../_images/pc/control-stop-over.png') center center no-repeat;}
+.bottom .control .control-center li.control-ff {width:27px;background:url('../_images/pc/control-ff.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-center li.control-ff:hover {background:url('../_images/pc/control-ff-over.png') center center no-repeat;}
+.bottom .control .control-center li.control-play-next {width:26px;background:url('../_images/pc/control-play-next.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-center li.control-play-next:hover {background:url('../_images/pc/control-play-next-over.png') center center no-repeat;}
+
+.bottom .control .volume-bar {width:100px;height:12px;margin-top:22px;margin-right:20px;float:left;position:relative;}
+.bottom .control .volume-bar .volume-bar-total {width:100%;height:4px;background:#ffffff;position:absolute;}
+.bottom .control .volume-bar .volume-bar-current {width:50%;height:4px;background:#e60012;position:absolute;}
+.bottom .control .volume-bar .volume-bar-area {width:100%;height:4px;position:absolute;cursor:pointer;}
+.bottom .control .volume-bar .volume-bar-cursor {width:20px;height:20px;top:-8px;left:40px;background:url('../_images/pc/cursor.png');position:absolute;cursor:pointer;}
+
+.bottom .control .time {margin-top:12px;margin-right:20px;float:left;}
+.bottom .control .time .time-current {color:#e60012;font-size:14px;font-family:Tahoma;}
+.bottom .control .time .time-total {color:#ffffff;font-size:14px;font-family:Tahoma;}
+
+.bottom .control .control-right {float:right;}
+.bottom .control .control-right ul {list-style:none;}
+.bottom .control .control-right li {height:48px;margin-left:15px;float:right;}
+.bottom .control .control-right li.control-caption {width:20px;background:url('../_images/pc/control-caption.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-right li.control-caption:hover {background:url('../_images/pc/control-caption-over.png') center center no-repeat;}
+.bottom .control .control-right li.control-bookmark {width:21px;background:url('../_images/pc/control-bookmark.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-right li.control-bookmark:hover {background:url('../_images/pc/control-bookmark-over.png') center center no-repeat;}
+.bottom .control .control-right li.control-repeat {width:21px;background:url('../_images/pc/control-repeat.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-right li.control-repeat-begin {width:21px;background:url('../_images/pc/control-repeat-begin.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-right li.control-repeat-end {width:21px;background:url('../_images/pc/control-repeat-end.png') center center no-repeat;cursor:pointer;display:none;}
+.bottom .control .control-right li.control-config {width:20px;background:url('../_images/pc/control-config.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-right li.control-config:hover {background:url('../_images/pc/control-config-over.png') center center no-repeat;}
+.bottom .control .control-right li.control-fullscreen-off {width:20px;background:url('../_images/pc/control-fullscreen-off.png') center center no-repeat;cursor:pointer;}
+.bottom .control .control-right li.control-fullscreen-off:hover {background:url('../_images/pc/control-fullscreen-off-over.png') center center no-repeat;}
+.bottom .control .control-right li.control-fullscreen-on {width:18px;background:url('../_images/pc/control-fullscreen-on.png') center center no-repeat;cursor:pointer;display:none;}
+.bottom .control .control-right li.control-fullscreen-on:hover {background:url('../_images/pc/control-fullscreen-on-over.png') center center no-repeat;}
+.bottom .control .control-right li.control-speed {width:32px;color:#ffffff;text-align:center;cursor:pointer;}
+.bottom .control .control-right li.control-speed .speed-text {margin-top:14px;}
+
+
+
+.bottom .config {width:96%;margin:0 auto;position:relative;display:none;}
+.bottom .config .container {width:140px;min-height:200px;background:url('../_images/pc/back_popup.png');font-size:12px;bottom:20px;right:0;position:absolute;}
+.bottom .config .container .title {width:120px;height:30px;margin-top:12px;margin-left:12px;color:#ffffff;text-align:center;float:left;}
+.bottom .config .container .title_sub {width:120px;height:30px;margin-top:12px;margin-left:12px;background:url('../_images/pc/control-prev.png') no-repeat left center;color:#ffffff;text-align:center;line-height:30px;float:left;cursor:pointer;}
+.bottom .config .container ul {width:100%;padding-top:15px;margin-bottom:10px;border-top:1px solid #4e5e6e;list-style:none;float:left;}
+.bottom .config .container li {width:100%;margin-bottom:10px;float:left;}
+.bottom .config .container li .property {width:40px;margin-left:15px;color:#878c90;float:left;}
+.bottom .config .container li .value {width:70px;color:#ffffff;float:left;text-align:right;cursor:pointer;}
+.bottom .config .container li .value:hover {color:#e60012;}

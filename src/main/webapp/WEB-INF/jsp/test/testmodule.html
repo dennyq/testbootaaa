@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+<script>
+    var test = function () {
+        var prv={ };
+        function prop(name, def) {
+            prv[name] = def;
+            window[name]=def;
+            return function(value) {
+                // if (!value) is true for 'undefined', 'null', '0', NaN, '' (empty string) and false.
+                // I assume you wanted undefined. If you also want null add: || value===null
+                // Another way is to check arguments.length to get how many parameters was
+                // given to this function when it was called.
+                if (typeof value === "undefined"){
+                    //check if hasOwnProperty so you don't unexpected results from
+                    //the objects prototype.
+                    return Object.prototype.hasOwnProperty.call(prv,name) ? prv[name] : undefined;
+                }
+                prv[name]=value;
+                console.log(name)
+
+                return this;
+            }
+        };
+
+        return pub = {
+            a:prop('a', 1),
+            b:prop('b', 2),
+            c:prop('c', 3),
+            d:function(){
+                //to show that they are accessible via two methods
+                //This is a case where 'with' could be used since it only reads from the object.
+                return [prv.a,prv.b,prv.c];
+            }
+        };
+    }();
+//console.log(window[a]);
+</script>
+</body>
+</html>

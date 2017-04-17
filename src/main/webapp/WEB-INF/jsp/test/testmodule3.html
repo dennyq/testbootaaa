@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script></script>
+</head>
+<body>
+<script>
+    var AModule = (function (callback) {
+        var aa='aa';
+
+        return callback;
+    })
+////    (); // execute immediately
+//
+//
+    var BModule = (function (callback) {
+        var aa='bb';
+        // this is the factory function
+        return callback;
+    })
+//
+
+//
+    var mode='A';
+    if(mode=='A'){
+        AModule(function(){
+            console.log('aaa');
+            console.log(this.aa);
+        })();
+
+    }else{
+        BModule();
+        console.log(aa);
+    }
+
+</script>
+</body>
+</html>

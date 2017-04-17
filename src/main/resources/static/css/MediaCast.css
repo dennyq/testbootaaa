@@ -1,2 +1,63 @@
-body { padding:0;margin:0;width:100%;height:100%;overflow-x:hidden; overflow-y:hidden; }
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+/*body { padding:0;margin:0;width:100%;height:100%;overflow-x:hidden; overflow-y:hidden; }*/
 .video_container{display:block;width:100%;height:100%;}
+body { padding:0;margin:0;width:100%;height:100%;overflow-x:hidden; overflow-y:hidden; font-family: 'Nanum Gothic', serif;}
+#playlist {
+    display: table;
+    background: #121212;
+    width: 200px;
+    height: 100%;
+}
+#playlist li {
+    display: inline;
+    list-style: none;
+    text-align: center;
+}
+#playlist li a {
+    background: none;
+    text-decoration: none;
+    position:relative;
+}
+#playlist li img { width:100px; }
+#playlist li a { opacity: .5; transition: 1s opacity; }
+#playlist li a:hover, #playlist li a:focus, #playlist li a.currentvid { opacity: 1; }
+.right-list{
+    width: 25%;
+    height: 100%;
+    /* float: right; */
+    background: black;
+    z-index: 9999;
+    position: fixed;
+    margin-left: 75%;
+    margin-top: 0 !important;
+
+}
+#player_video{
+    z-index: 1!important;
+    position: fixed!important;
+    /*height: 820px!important;*/
+    height:  100% !important;
+}
+#player_skin{
+    position: fixed!important;
+    z-index: 9999!important;
+    /*margin-top: 72.5% !important;*/
+}
+::cue(.de) {
+    color: #000;
+    background-color: #ffcc00;
+}
+::cue(.en) {
+    color: #fff;
+    background-color: #00247d;
+}
+::cue(.es) {
+    color: #f1bf00;
+    background-color: #aa151b;
+}
+
+::cue(.ko) {
+    color: #f1bf00;
+    background-color: #aa151b;
+}
+
