@@ -111,7 +111,7 @@ function video_resize() {
             if(!isFullScreen && playerSkin){
 				isFullScreen = false;
 				setTimeout(function(){
-					player_skin.mcCancelFullscreen(isFullScreen);
+					document.player_skin.mcCancelFullscreen(isFullScreen);
 				},100);
             }
 		}
@@ -534,19 +534,19 @@ function video_fullscreen() {
 	return isFullScreen;
 }
 //todo: 바로 걸림
-//if (document.addEventListener)
-//{
-//    document.addEventListener('webkitfullscreenchange', fullexitHandler, false);
-//    document.addEventListener('mozfullscreenchange', fullexitHandler, false);
-//    document.addEventListener('fullscreenchange', fullexitHandler, false);
-//    document.addEventListener('MSFullscreenChange', fullexitHandler, false);
-//}
-//
-//function fullexitHandler()
-//{
-//    //todo: ESC 때문에 제대로 동작하지 않음.
-//
-//}
+if (document.addEventListener)
+{
+    document.addEventListener('webkitfullscreenchange', fullexitHandler, false);
+    document.addEventListener('mozfullscreenchange', fullexitHandler, false);
+    document.addEventListener('fullscreenchange', fullexitHandler, false);
+    document.addEventListener('MSFullscreenChange', fullexitHandler, false);
+}
+
+function fullexitHandler()
+{
+    //todo: ESC 때문에 제대로 동작하지 않음.
+
+}
 
 function video_getfullscreen() 
 {

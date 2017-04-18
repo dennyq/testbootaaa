@@ -184,7 +184,7 @@ keys.enter 		= 13;
 keys.esc 		= 27;
 
 
-//window.addEventListener("keydown", checkKeyPressed, false);
+window.addEventListener("keydown", checkKeyPressed, false);
 function checkKeyPressed(e) {
 	//var skipTime = $('.mc-skip-play').attr('skip-time');
 	var skipTime = $mcSkipPlay.attr('skip-time');
@@ -2213,12 +2213,12 @@ var imgToggleOnOff = function (thisObj, state) {
 
 //parentKeyPressed
 var parentKeyPressed = function(e,req){
-	//console.log('parentKeyPressed e : ');
-	//console.log(e);
-	//console.log(e.keyCode);
-
-	//console.log('parentKeyPressed req : ');
-	//console.log(req);
+	console.log('parentKeyPressed e : ');
+	console.log(e);
+	console.log(e.keyCode);
+    //
+	console.log('parentKeyPressed req : ');
+	console.log(req);
 	var ctrl = e.ctrlKey ? e.ctrlKey : ((e.keyCode === 17)); // ctrl detection
 
 	if(e.keyCode == req.playPause.key && (req.playPause.ctrlkey?ctrl:true)){
@@ -2512,9 +2512,10 @@ var GUIDE_ADJUST_NUM = -25;
  * @param thisObj
  */
 var guideShow = function (thisObj) {
+    console.log(thisObj);
 	var $el = $(thisObj);
-
-	$mcGuideTxt.html($el.attr('guide'));
+    GUIDE_ADJUST_NUM = 0;
+	$mcGuideTxt.html($el.attr('guide')).show();
 
 	var guideImg = $el.attr('guide-img');
 	if (guideImg) {
@@ -2526,23 +2527,45 @@ var guideShow = function (thisObj) {
 		$mcGuideImg.show();
 	}
 
-	if($el.attr('guide')=='전체화면'){
-		GUIDE_ADJUST_NUM = -40;
+
+    var elWidth = 10;
+    elWidth = elWidth+ $el.attr('guide').length*10*0.96;
+	if($el.attr('id') == 'full'){
+		GUIDE_ADJUST_NUM = -10;
+        //elWidth= 50;
+        //$mcGuideTxt.css('width', '50px');
+	}else if($el.attr('id') == 'repeat'){
+        GUIDE_ADJUST_NUM = -1;
+	}else if($el.attr('id') == 'caption'){
+        GUIDE_ADJUST_NUM = -1;
+	}else if($el.attr('id') == 'rew'){
+        GUIDE_ADJUST_NUM = -1;
+        elWidth= 58;
+	}else if($el.attr('id') == 'play'){
+        GUIDE_ADJUST_NUM = -1;
+        elWidth= 120;
+	}else if($el.attr('id') == 'ff'){
+        GUIDE_ADJUST_NUM = -1;
+        elWidth= 58;
+	//}else if($el.attr('id') == 'mute'){
+     //   GUIDE_ADJUST_NUM = -1;
+
 	}
+
+
+	//if($el.attr('guide')=='전체화면'){
+	//	GUIDE_ADJUST_NUM = -40;
+	//}
+//mc-prgrs-bg
+    var offsetLeft = $mcPrgrsBg.offset().left;
 
 	var guideLeft = $el.offset().left;// + $el.width() / 4;
-	var guideHalfWidth = $mcGuideTxt.width()/2;
-	var left = guideLeft - guideHalfWidth + GUIDE_ADJUST_NUM;
-//            console.log($el.attr('guide'));
-	if($el.attr('guide')=='전체화면'){
-		$mcGuideTxt.css('width', '50px');
-		$mcGuideTxt.css('left', left);
-	}else{
-		$mcGuideTxt.css('width', 'auto');
-		$mcGuideTxt.css('left', left);
-	}
 
-	//$mcGuide.find('.mc-guide-txt').css('left', guideLeft - guideHalfWidth);
+	var guideHalfWidth = elWidth/2;
+    var left = guideLeft - guideHalfWidth + GUIDE_ADJUST_NUM - offsetLeft;
+
+    $mcGuideTxt.css({ 'left': left, 'width': elWidth });
+
 
 
 };
@@ -2565,6 +2588,7 @@ var guideHide = function (thisObj) {
 
 		$mcGuide.hide();
 		$mcGuideImg.hide();
+        $('.mc-guide-bmrk').hide();
 	}
 
 	if($el.attr('guide')=='전체화면'){
@@ -2582,7 +2606,7 @@ var guideHide = function (thisObj) {
 
 };
 
-var GUIDE_BMRK_ADJUST_NUM = -45;
+var GUIDE_BMRK_ADJUST_NUM = -1;
 /**
  * 북마크 가이드 디자인 토글
  * @param thisObj
@@ -2590,12 +2614,22 @@ var GUIDE_BMRK_ADJUST_NUM = -45;
 var guideBmrkShow = function (thisObj) {
 	var $el = $(thisObj);
 
-	var guideLeft = $el.offset().left;// + $el.width() / 4;
-	var guideHalfWidth = $mcGuideTxt.width()/2;
-	var left = guideLeft - guideHalfWidth + GUIDE_BMRK_ADJUST_NUM;
+	console.log(thisObj);
 
-	$('.mc-guide-bmrk').css('left', left);
-	$('.mc-guide-bmrk').show();
+    var elWidth = 60;
+
+
+
+    var offsetLeft = $mcPrgrsBg.offset().left;
+
+    var guideLeft = $el.offset().left;
+
+    var guideHalfWidth = elWidth/2;
+    var left = guideLeft - guideHalfWidth + GUIDE_BMRK_ADJUST_NUM - offsetLeft;
+
+    $('.mc-guide-bmrk').css({ 'left': left, 'width': elWidth }).show();
+
+
 
 
 };
@@ -2605,15 +2639,15 @@ var guideBmrkShow = function (thisObj) {
  * @param thisObj
  */
 var guideBmrkHide = function (thisObj) {
-	var $el = $(thisObj);
+	//var $el = $(thisObj);
 
 	$('.mc-guide-bmrk').hide();
 
-
-	var guideLeft = $el.offset().left;// + $el.width() / 4;
-	var guideHalfWidth = $mcGuideTxt.width()/2;
-	var left = guideLeft - guideHalfWidth + GUIDE_BMRK_ADJUST_NUM;
-
-	$mcGuideTxt.css('left', left);
+    //
+	//var guideLeft = $el.offset().left;// + $el.width() / 4;
+	//var guideHalfWidth = $mcGuideTxt.width()/2;
+	//var left = guideLeft - guideHalfWidth + GUIDE_BMRK_ADJUST_NUM;
+    //
+	//$mcGuideTxt.css('left', left);
 
 };

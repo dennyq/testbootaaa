@@ -30,12 +30,8 @@
     <script language="javascript" src="/skin/js/skin_stub.js" type="text/javascript"></script>
     <script language="javascript" src="/skin/js/skin_control_api.js" type="text/javascript"></script>
     <script language="javascript" src="/skin/js/skin_module.js" type="text/javascript"></script>
+    <!--<style>@import url(https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css);html{font-family:'Nanum Barun Gothic',sans-serif;}.bold{font-weight:700;}.regular{font-weight:400;}.light{font-weight:300;}.ultralight{font-weight:200;}h3{font-weight:300;}h4{font-weight:200;}</style>-->
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-        });
-    </script>
 </head>
 
 <body>
@@ -161,10 +157,10 @@
         <div class="control">
             <div class="control-left">
                 <ul>
-                    <li class="mc-skip-play mc-guide-toggle mc-rew control-rw" skip-time="10" skip-type="R" guide="10초 (left)" ></li>
-                    <li class="mc-play-toggle mc-guide-toggle control-play" guide="재생/일시정지(pause)"></li>
-                    <li class="mc-skip-play mc-guide-toggle mc-ff control-ff" skip-time="10" skip-type="F" guide="10초 (right)" ></li>
-                    <li class="mc-mute-toggle control-volume-on mc-volume-show-toggle"></li>
+                    <li id="rew" class="mc-control-btn mc-skip-play mc-guide-toggle mc-rew control-rw" skip-time="10" skip-type="R" guide="10초 (left)" ></li>
+                    <li id="play" class="mc-control-btn mc-play-toggle mc-guide-toggle control-play" guide="재생/일시정지(pause)"></li>
+                    <li id="ff" class="mc-control-btn mc-skip-play mc-guide-toggle mc-ff control-ff" skip-time="10" skip-type="F" guide="10초 (right)" ></li>
+                    <li id="mute" class="mc-control-btn mc-mute-toggle  control-volume-on mc-volume-show-toggle" guide="음소거"></li>
                 </ul>
             </div>
 
@@ -194,14 +190,14 @@
 
             <div class="mc-default control-right">
                 <ul>
-                    <li class="mc-fullscreen-toggle mc-guide-toggle control-fullscreen-on" guide="전체화면"></li>
-                    <li class="mc-setting-btn control-config"></li>
-                    <li class="mc-repeat-btn mc-guide-toggle control-repeat-on0" guide="구간반복(3회)" repeat-cnt="3"></li>
-                    <li class="mc-bmrk-btn mc-guide-bmrk-toggle control-bookmark"></li>
-                    <li class="mc-cation-btn control-caption"></li>
-                    <li class="control-speed ">
+                    <li id="full" class="mc-control-btn mc-fullscreen-toggle mc-guide-toggle control-fullscreen control-fullscreen-on" guide="전체화면"></li>
+                    <li class="mc-control-btn mc-setting-btn control-config"></li>
+                    <li id="repeat" class="mc-control-btn mc-repeat-btn mc-guide-toggle control-repeat control-repeat-on0" guide="구간반복(3회)" repeat-cnt="3"></li>
+                    <li class="mc-control-btn mc-bmrk-btn mc-guide-bmrk-toggle control-bookmark"></li>
+                    <li id="caption" class="mc-control-btn mc-caption-btn mc-guide-toggle control-caption" guide="자막"></li>
+                    <li class="mc-control-btn mc-speed-out control-speed ">
                         <div class="mc-speed-btn speed-text">
-                            <span class="mc-speed-view "></span>
+                            <span class="mc-speed-view"></span>
                             <span style="font-size:7px">x</span>
                         </div>
                     </li>
@@ -250,7 +246,7 @@
                         <div class="mc-lang mc-ko value"><span class="mc-lang-view">한국어</span></div>
                         <div class="mc-lang mc-en value"><span class="mc-lang-view">Korean</span></div>
                     </li>
-                    <li>
+                    <li class="mc-show-shortcut">
                         <div class="mc-lang mc-ko property">안내</div>
                         <div class="mc-lang mc-en property">SHORTCUT</div>
                     </li>
@@ -315,22 +311,22 @@
                     <li class="mc-sub-menu">
                         <div class="property">ko</div>
                         <div class="mc-menu mc-lang mc-ko value"><span class="mc-menu-text">한국어</span></div>
-                        <div class="mc-menu mc-lang mc-en value"><span class="mc-menu-text">Korean</span></div>
+                        <div class="mc-menu mc-lang mc-en value"><span class="mc-menu-text">한국어</span></div>
                     </li>
                     <li class="mc-sub-menu">
                         <div class="property">en</div>
-                        <div class="mc-menu mc-lang mc-ko value"><span class="mc-menu-text">영어</span></div>
+                        <div class="mc-menu mc-lang mc-ko value"><span class="mc-menu-text">English</span></div>
                         <div class="mc-menu mc-lang mc-en value"><span class="mc-menu-text">English</span></div>
                     </li>
                     <li class="mc-sub-menu">
                         <div class="property">zh</div>
-                        <div class="mc-menu mc-lang mc-ko value"><span class="mc-menu-text">중국어</span></div>
-                        <div class="mc-menu mc-lang mc-en value"><span class="mc-menu-text">Chinese</span></div>
+                        <div class="mc-menu mc-lang mc-ko value"><span class="mc-menu-text">中国語</span></div>
+                        <div class="mc-menu mc-lang mc-en value"><span class="mc-menu-text">中国語</span></div>
                     </li>
                     <li class="mc-sub-menu">
                         <div class="property">ja</div>
-                        <div class="mc-menu mc-lang mc-ko value"><span class="mc-menu-text">일본어</span></div>
-                        <div class="mc-menu mc-lang mc-en value"><span class="mc-menu-text">Japanese</span></div>
+                        <div class="mc-menu mc-lang mc-ko value"><span class="mc-menu-text">日本語</span></div>
+                        <div class="mc-menu mc-lang mc-en value"><span class="mc-menu-text">日本語</span></div>
                     </li>
                 </ul>
 
@@ -404,11 +400,11 @@
                     <li class="mc-sub-menu">
                         <div class="property">ko</div>
                         <div class="mc-menu mc-lang mc-ko value" lang="ko"><span class="mc-menu-text">한국어</span></div>
-                        <div class="mc-menu mc-lang mc-en value" lang="ko"><span class="mc-menu-text">Korean</span></div>
+                        <div class="mc-menu mc-lang mc-en value" lang="ko"><span class="mc-menu-text">한국어</span></div>
                     </li>
                     <li class="mc-sub-menu">
                         <div class="property">en</div>
-                        <div class="mc-menu mc-lang mc-ko value" lang="en"><span class="mc-menu-text">영어</span></div>
+                        <div class="mc-menu mc-lang mc-ko value" lang="en"><span class="mc-menu-text">English</span></div>
                         <div class="mc-menu mc-lang mc-en value" lang="en"><span class="mc-menu-text">English</span></div>
                     </li>
                 </ul>
@@ -423,6 +419,51 @@
     <!-- 알림창 시작 -->
     <div class="mc-alert alert-add" style="display: block">
         <div align=center class="mc-alert-text"></div>
+    </div>
+    <!-- 알림창 시작 -->
+    <div class="mc-shortcut alert-add" style="display: none;">
+        <div align=center class="mc-alert-text" style="width: 700px;margin: 0 auto;position: relative;border: 1px solid grey;background-color: white; opacity: 0.8;height: 300px;top: -130px;">
+            <div style="padding: 10px;">단축키</div>
+            <!--재생/일시정지   space-->
+            <!--소리 크게             방향키 위-->
+            <!--소리 작게             방향키 아래-->
+            <!--앞으로(FF)           방향키 우측-->
+            <!--뒤로(REW)           방향키 좌측-->
+            <!--다음재생              PageDown-->
+            <!--이전재생              PageUp-->
+
+            <!--배속                         Ctrl + X-->
+            <!--북마크 추가           Ctrl + B-->
+            <!--북마크 다음이동  Ctrl + D-->
+            <!--북마크 이전이동  Ctrl + A-->
+            <!--구간반복                Ctrl + R-->
+            <!--음소거                     Ctrl + M-->
+            <!--전체 화면                Enter-->
+
+            <div style="text-align: left;padding: 10px;width: 100%;">
+                <div style="float: left;width: 45%;padding: 10px">
+                    <span style="">재생/일시정지</span><span>space</span><br>
+                    <span style="">소리 크게</span><span>방향키 위</span><br>
+                    <span style="">소리 작게</span><span>방향키 아래</span><br>
+                    <span style="">앞으로(FF) </span><span>방향키 우측</span><br>
+                    <span style="">뒤로(REW) </span><span>방향키 좌측</span><br>
+                    <span style="">다음재생</span><span>PageDown</span><br>
+                    <span style="">이전재생</span><span>PageUp</span><br>
+                </div>
+                <div style="width: 45%;padding: 10px;    display: inline-block;">
+                    <span style="">배속 </span><span>Ctrl + X</span><br>
+                    <span style="">북마크 추가</span><span>Ctrl + B</span><br>
+                    <span style="">북마크 다음이동</span><span>Ctrl + D</span><br>
+                    <span style="">북마크 이전이동</span><span>Ctrl + A</span><br>
+                    <span style="">구간반복</span><span>Ctrl + R</span><br>
+                    <span style="">음소거</span><span>Ctrl + M</span><br>
+                    <span style="">전체 화면</span><span>Enter</span><br>
+
+                </div>
+
+            </div>
+            <div style="clear: both"></div>
+        </div>
     </div>
 </div>
 
@@ -488,7 +529,7 @@
     req.speedViews    = '.mc-speed-view';         //배속
     req.speedBtns    = '.mc-speed-btn';         //배속
 
-    req.captionBtn    = '.mc-cation-btn';         //자막
+    req.captionBtn    = '.mc-caption-btn';         //자막
 
     req.fullscreen    = '.mc-fullscreen';         //전체화면
     req.fullscreenToggle    = '.mc-fullscreen-toggle';         //전체화면
@@ -576,7 +617,13 @@
 //        setCookieSetting(false);
 
 
+        $('.mc-show-shortcut').click(function(){
+            $('.mc-shortcut').toggle();
+        });
 
+        $('.mc-speed-out').mouseout(function(){
+            $('.mc-popup-speed').hide();
+        });
 
         /**
          * 2. 디자인 관련 스크립트
@@ -629,7 +676,12 @@
 
     });
 
-
+    var hideOutMenus = function(){
+        console.log('hideOutMenus : ');
+    }
+    var hideOverMenus = function(){
+        console.log('hideOverMenus : ');
+    }
 
     //볼륨기본값 SET
     function setVolumeDefault(volumeDefault) {
@@ -751,6 +803,8 @@
             console.log('$mcPlayToggle.click : ');
             playToggle();
         });
+
+
 
         //todo: 나중에 디자인 온것대로 처리
 //        $('body').not('.bottom').click(function () {
@@ -924,15 +978,12 @@
 
 
         // 배속 디자인
-        $mcSpeedBtns.mouseover(function () {
+        $('.mc-speed-out, .mc-speed-btn').mouseover(function () {
             $mcSpeedMenu.show();
         });
 
-        $mcSpeedBtns.mouseout(function () {
-            setTimeout(function(){
-                $mcSpeedMenu.hide();
-            },3000);
-
+        $('.mc-speed-out, .mc-speed-btn').mouseout(function () {
+            $mcSpeedMenu.hide();
         });
 
 
@@ -961,8 +1012,8 @@
             //클래스 초기화
             $menuSelected.removeClass(selectedClass);
             $mcSpeedMenus.removeClass(selectedClass);
-            $mcSpeedViews.removeClass('mc-selected').removeClass('mc-underline');
-//            $mcSpeedViews.parent().removeClass('mc-selected').removeClass('mc-underline');
+//            $mcSpeedViews.removeClass('mc-selected').removeClass('mc-underline');
+            $mcSpeedViews.parent().removeClass('mc-selected').removeClass('mc-underline');
             clickedSpeed = $el.text();
 
             setCookie('speed-value', clickedSpeed);
@@ -975,8 +1026,8 @@
                 //환경설정 배속메뉴 언더라인함께 바꾸기
                 menusAddClassWhenTxt($smenuSelected, underlineClass, oneClickSpeed,$mcMenuText);
                 //기본 스피드뷰
-                $mcSpeedViews.addClass('mc-selected').addClass('mc-underline');
-//                $mcSpeedViews.parent().addClass('mc-selected').addClass('mc-underline');
+//                $mcSpeedViews.addClass('mc-selected').addClass('mc-underline');
+                $mcSpeedViews.parent().addClass('mc-selected').addClass('mc-underline');
             }
 
             if(!oneClickSpeed){
@@ -1003,8 +1054,8 @@
             var $el = $(this);
             var showSpeedText, clickedSpeed;
             var $smenuSelected = $mcSettingSpeedMenus.find(findMenuClass);
-            $mcSpeedViews.removeClass('mc-selected').removeClass('mc-underline');
-//            $mcSpeedViews.parent().removeClass('mc-selected').removeClass('mc-underline');
+//            $mcSpeedViews.removeClass('mc-selected').removeClass('mc-underline');
+            $mcSpeedViews.parent().removeClass('mc-selected').removeClass('mc-underline');
             if (!oneClickSpeed) {
                 oneClickSpeed = getCookie('oneclick-speed') == '' ? '1.4' : getCookie('oneclick-speed');
                 menusAddClassWhenTxt($mcSpeedMenus, underlineClass, oneClickSpeed, $mcMenuText);
@@ -1028,8 +1079,9 @@
                 menusAddClassWhen($mcSpeedMenus, selectedClass, oneClickSpeed);
                 //환경설정쪽 메뉴목록 UI변경
                 menusAddClassWhenTxt($smenuSelected, selectedClass, oneClickSpeed,$mcMenuText);
-                $mcSpeedViews.addClass('mc-selected').addClass('mc-underline');
-//                $mcSpeedViews.parent().addClass('mc-selected').addClass('mc-underline');
+                menusAddClassWhenTxt($smenuSelected, underlineClass, oneClickSpeed,$mcMenuText);
+//                $mcSpeedViews.addClass('mc-selected').addClass('mc-underline');
+                $mcSpeedViews.parent().addClass('mc-selected').addClass('mc-underline');
             }
 
             setCookie('speed-value', showSpeedText);
@@ -1460,7 +1512,8 @@
             //현재메뉴 클래스초기화
             $sMenuUnderline.removeClass(underlineClass);
             $sMenuSelected.removeClass(selectedClass);
-            $mcSpeedViews.removeClass('mc-selected').removeClass('mc-underline');
+//            $mcSpeedViews.removeClass('mc-selected').removeClass('mc-underline');
+            $mcSpeedViews.parent().removeClass('mc-selected').removeClass('mc-underline');
 
             var clickedValue  = getMenuValue(this);
             var clickedProperty  = getMenuProperty(this);
@@ -1474,13 +1527,15 @@
             if (clickedSpeed != '1.0') {
                 oneClickSpeed = clickedSpeed;       //1이 아니면 원클릭스피드
                 $menu.addClass(underlineClass);     //현재메뉴 언더라인
-                $mcSpeedViews.addClass('mc-selected').addClass('mc-underline');
+//                $mcSpeedViews.addClass('mc-selected').addClass('mc-underline');
+                $mcSpeedViews.parent().addClass('mc-selected').addClass('mc-underline');
             }
 
             menusAddClassWhen($sMenuSelected, underlineClass, oneClickSpeed);//현재메뉴 언더라인
 
             //현재메뉴에 선택된것 표시
             $menu.addClass(selectedClass);
+
 
             //배속기본표시에 선택된것 표시
             $mcSpeedViews.html(clickedSpeed);
@@ -1621,7 +1676,9 @@
         var isConfig = false;
 
         var repeatStatus = 0;
-        var $video = $('.player');
+        var $video = $('div.player');
+//        var $video = $('div.player div:not(".bottom")');
+//        var $video = $('video');
 
         // Init
 
@@ -1711,13 +1768,15 @@
                 $('.control-config').css({'background': 'url(_images/mobile/control-config.png) center center no-repeat'});
             }
             else {
-                $('.control-config').css({'background': 'url(_images/pc/control-config.png) center center no-repeat'});
+                $('.control-config').css({'background': 'url(_images/pc/control-config.png) center 78% no-repeat'});
             }
         }
 
         function setPlayerVisible(status) {
 //             setConsole('----- setPlayerVisible: ' + status);
 //            console.log('setPlayerVisible : '+status);
+
+//            status = true;
 
             if (navigator.userAgent.match(/iPhone|iPad|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || navigator.userAgent.match(/LG|SAMSUNG|Samsung/) != null) {
                 switch (status) {
@@ -1751,7 +1810,6 @@
                 }
             }
             else {
-//                console.log(' 222: ');
                 switch (status) {
                     case true:
                         $('.top').css({"display": "block"});
@@ -1791,16 +1849,6 @@
         }
         var isVideoClick = false;
         function setPlay(status, file, second) {
-//            setConsole('----- setPlay: ' + status);
-
-//            if (file != null) {
-//                video.src = varMovieUrl;
-//            }
-//
-//            if (second != null) {
-//                video.currentTime = second;
-//            }
-
             switch (status) {
                 case true:
                     isPlay = true;
@@ -1850,83 +1898,17 @@
             }
             console.log('isPlay : ' + isPlay);
             console.log('isVideoClick : ' + isVideoClick);
-
-            if(isPlay ){
+            if(isVideoClick && isPlay){
                 var playState = playToggle();
-//                console.log('status : ' + status);
-//                console.log('playState : ' + playState);
-            }else{
-                //todo: 밖쪽
             }
+
 
         }
 
 
-        function setConfig(type, status) {
-            console.log(' : ' + type + ', ' + status);
-//            setConsole('----- setConfig: ' + type + ', ' + status);
+        function setConfig(type, status, text) {
+            console.log(' : ' + type + ', ' + status+ ', ' + text);
 
-//            isConfig = status;
-//
-//            $('.config').css({'display': 'none'});
-//            $('.config .config-main').css({'display': 'none'});
-//            $('.config .config-quality').css({'display': 'none'});
-//            $('.config .config-speed').css({'display': 'none'});
-//            $('.config .config-caption').css({'display': 'none'});
-//            $('.config .config-seek').css({'display': 'none'});
-//            $('.config .config-repeat').css({'display': 'none'});
-//            $('.config .config-language').css({'display': 'none'});
-//
-//            if (status == true) {
-//                $('.config').css({'display': 'block'});
-//
-//                if (type == 'config-main') {
-//                    $('.config .title').css({'display': 'block'});
-//                    $('.config .title_sub').css({'display': 'none'});
-//                    $('.config .config-main').css({'display': 'block'});
-//                    $('.config li .property').css({'display': 'block'});
-//                    $('.config li .value').css({'width': '70px'});
-//                    $('.config li .value').css({'margin-left': '0'});
-//                    $('.config li .value').css({'text-align': 'right'});
-//                }
-//                else {
-//                    $('.config .title').css({'display': 'none'});
-//                    $('.config .title_sub').css({'display': 'block'});
-//                    $('.config .prev').css({'display': 'block'});
-//                    $('.config li .property').css({'display': 'none'});
-//                    ;
-//                    $('.config li .value').css({'width': '112px'});
-//                    $('.config li .value').css({'margin-left': '15px'});
-//                    $('.config li .value').css({'text-align': 'center'});
-//
-//                    switch (type) {
-//                        case 'config-quality':
-//                            $('.config .config-quality').css({'display': 'block'});
-//                            $('.config .title_sub').text('품질');
-//                            break;
-//                        case 'config-speed':
-//                            $('.config .config-speed').css({'display': 'block'});
-//                            $('.config .title_sub').text('속도');
-//                            break;
-//                        case 'config-caption':
-//                            $('.config .config-caption').css({'display': 'block'});
-//                            $('.config .title_sub').text('자막');
-//                            break;
-//                        case 'config-seek':
-//                            $('.config .config-seek').css({'display': 'block'});
-//                            $('.config .title_sub').text('탐색');
-//                            break;
-//                        case 'config-repeat':
-//                            $('.config .config-repeat').css({'display': 'block'});
-//                            $('.config .title_sub').text('반복');
-//                            break;
-//                        case 'config-language':
-//                            $('.config .config-language').css({'display': 'block'});
-//                            $('.config .title_sub').text('언어');
-//                            break;
-//                    }
-//                }
-//            }
             var $config = $('.config');
 
             $config.css({ 'display': 'none' });
@@ -1955,6 +1937,7 @@
                     $('.mc-lang').hide();
 //                    $('.mc-lang.mc-' + langValue).css({'display': 'block'});
                     $('.mc-lang.mc-' + langValue).show();
+                    $('.mc-setting .container').bind('mouseout', bindConfigOut);
                 }
                 else {
                     $('.config .title-sub').text(text).show();
@@ -1972,59 +1955,59 @@
 //                    $('.mc-lang.mc-' + langValue).css({'display': 'block'});
                     $('.mc-lang.mc-' + langValue).show();
                     $('.config .title').css({ 'display': 'none' });
+                    $('.mc-setting .container').unbind('mouseout', bindConfigOut);
 
                 }
+
             }
+
+
+
         }
-//        }
 
 
-//        $video.click(function (event) {
+        $video.click(function (event) {
 //            setConsole('- video: click');
-//
-//            if (navigator.userAgent.match(/iPhone|iPad|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || navigator.userAgent.match(/LG|SAMSUNG|Samsung/) != null) {
-//                setPlayerVisible(true);
-//            }
-//            else {
-//
-//
-//                var isCenterClick = event.target.className.indexOf('control-play-center')>-1;
-//                console.log('isCenterClick : '+isCenterClick);
-//                var thisStatus = MCSkin.getStatus();
-//                console.log('thisStatus : ' + thisStatus);
-//                var isPlaying = thisStatus == 'Playing';
-//
-//                if(!isCenterClick){
-//                    //todo: 센터가 아닐경우
-//                    if(isPlaying){
-//                        //todo: 재생중인경우 멈춤...
-////                        포즈
-//                        setPlay(false, null, null);
-//
-//                    }else{
-//
-//                    }
-//
-//                }else{
-//                    //todo: 센터가 맞는경우
-//                    if(!isPlaying){
-//                        setPlay(false, null, null);
-//                    }
-//
-//                }
-//
-//
-//
-//
-//
-//
-//
-//
-//            }
-//
-//
-////            isVideoClick = true;
-//        });
+            console.log('className : '+event.target.className);
+            var isBottomClick = event.target.className.indexOf('mc-control-btn')>-1 || event.target.className.indexOf('bottom')>-1;
+            var isControlClick = event.target.className.indexOf('mc-')>-1 && event.target.className.indexOf('-view')>-1;
+            console.log(' isBottomClick: '+isBottomClick);
+            console.log(' isControlClick: '+isControlClick);
+            if(isBottomClick){
+                return;
+            }
+            if(isControlClick){
+
+                return;
+            }
+
+            if (navigator.userAgent.match(/iPhone|iPad|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || navigator.userAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+                setPlayerVisible(true);
+            }
+            else {
+
+                var isCenterClick = event.target.className.indexOf('control-play-center')>-1;
+
+                var thisStatus = MCSkin.getStatus();
+                var isPlaying = thisStatus == 'Playing';
+                if(!isCenterClick){
+                    //센터가 아닐경우
+                    if(isPlaying){
+                        //재생중인경우 멈춤...
+                        setPlay(true, null, null);
+                    }
+
+                }else{
+                    //센터가 맞는경우
+                    if(!isPlaying){
+                        setPlay(false, null, null);
+                    }
+                }
+            }
+
+
+            isVideoClick = true;
+        });
 
         $video.mouseover(function () {
 //            setConsole('- video: mouseover');
@@ -2039,7 +2022,7 @@
                 $('.control-config').css({'background': 'url(_images/mobile/control-config.png) center center no-repeat'});
             }
             else {
-                $('.control-config').css({'background': 'url(_images/pc/control-config.png) center center no-repeat'});
+                $('.control-config').css({'background': 'url(_images/pc/control-config.png) center 78% no-repeat'});
             }
         });
 
@@ -2087,7 +2070,7 @@
                     $('.control-config').css({'background': 'url(_images/mobile/control-config.png) center center no-repeat'});
                 }
                 else {
-                    $('.control-config').css({'background': 'url(_images/pc/control-config.png) center center no-repeat'});
+                    $('.control-config').css({'background': 'url(_images/pc/control-config.png) center 78% no-repeat'});
                 }
             }
             else {
@@ -2097,28 +2080,129 @@
                     $('.control-config').css({'background': 'url(_images/mobile/control-config-over.png) center center no-repeat'});
                 }
                 else {
-                    $('.control-config').css({'background': 'url(_images/pc/control-config-over.png) center center no-repeat'});
+                    $('.control-config').css({'background': 'url(_images/pc/control-config-over.png) center 78% no-repeat'});
                 }
             }
         });
 
-        $('.control-config').mouseover(function () {
-            setConsole('- control-config: mouseover');
+        var bindConfigOver = function(){
+            setControlDesign(true);
+        };
 
-            isConfig = true;
+        var bindConfigOut = function(){
+            setControlDesign(false);
+        };
 
-            setConfig('config-main', true);
 
-            if (navigator.userAgent.match(/iPhone|iPad|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || navigator.userAgent.match(/LG|SAMSUNG|Samsung/) != null) {
-                $('.control-config').css({'background': 'url(_images/mobile/control-config-over.png) center center no-repeat'});
-            }
-            else {
-                $('.control-config').css({'background': 'url(_images/pc/control-config-over.png) center center no-repeat'});
-            }
+        $mcSettingMenu.click(function(){
+            $('.mc-setting .container').unbind('mouseover', bindConfigOver);
+            $('.mc-setting .container').unbind('mouseout', bindConfigOut);
+
+            var clickedText = $(this).find('.sub-title:visible').text();
+            var menu = this.className.replace('mc-setting-menu ','').replace('control-','');
+            setConfig(menu, true, clickedText);
         });
 
 
 
+        $('.config .prev').click(function () {
+            setConfig('config-main', true);
+        });
+
+        $('.config .close').click(function () {
+            setConfig('', false);
+        });
+
+
+        $('.config .title-sub').click(function () {
+            setConfig('config-main', true);
+        });
+
+
+        //배경 투명
+        $('body').css('background-color','transparent');
+
+        //이미지 hover 디자인
+        $mcImgToggle.mouseover(function () {
+            imgToggleOnOff($(this), '_on');
+        });
+
+        $mcImgToggle.mouseout(function () {
+            imgToggleOnOff($(this), '_off');
+        });
+
+        //가이드 디자인
+        $mcGuideToggle.mouseover(function () {
+//            console.log(this);
+            guideShow(this);
+        });
+
+        $mcGuideToggle.mouseout(function () {
+            guideHide(this);
+        });
+
+        $('.mc-guide-bmrk').hide();
+
+        //북마크 가이드 디자인
+        $('.mc-guide-bmrk-toggle').mouseover(function () {
+//            $('.mc-guide-bmrk').show();
+
+            guideBmrkShow(this);
+        });
+
+        //북마크 가이드 디자인
+        $('.mc-guide-bmrk-toggle').mouseout(function () {
+//            $('.mc-guide-bmrk').hide();
+            guideBmrkHide(this);
+        });
+
+        $('.mc-guide-bmrk').mouseover(function(){
+
+            var left = $(this).find($mcGuideTxt).css('left');
+            $(this).css('left',left).show();
+//           $(this).css('visibility','visible');
+        });
+        $('.mc-guide-bmrk').mouseout(function(){
+//           $(this).css('visibility','hidden');
+        });
+
+
+//        환경설정 MOUSEOVER 디자인
+        $mcSettingBtn.mouseover(function(){
+            setControlDesign(true);
+            $('.mc-setting .container').bind('mouseover',bindConfigOver);
+            $('.mc-setting .container').bind('mouseout', bindConfigOut);
+        });
+
+        $mcSettingBtn.mouseout(function(){
+            setControlDesign(false);
+        });
+
+
+        $mcSetting.find(findMenuClass).click(function(){
+            //todo: 클릭시 사라지면 아래, 변경하려면 여기
+            $mcSetting.hide();
+        });
+
+
+        var setControlDesign = function(isConfig){
+//            setConsole('- control-config: click');
+            console.log('setControlDesign isConfig : '+isConfig);
+
+            if (isConfig) {
+                isConfig = true;
+                $('.control-config').css({ 'background': 'url(_images/pc/control-config-over.png) center 78% no-repeat' });
+
+                setConfig('config-main', true);
+            }
+            else {
+                isConfig = false;
+                $('.control-config').css({ 'background': 'url(_images/pc/control-config.png) center 78% no-repeat' });
+
+                setConfig('', false);
+
+            }
+        };
 
     };
 

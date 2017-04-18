@@ -60,7 +60,7 @@
 
 /*}*/
 /*/!*개발적요소인지 디자인적요소인지 구분*!/*/
-.mc-alert { width: 100%; position: absolute; display: none; width: 100%; top: 50%; padding: 0px; z-index: 100; }
+.alert-add { width: 100%; position: absolute; display: none; width: 100%; top: 50%; padding: 0px; z-index: 100; }
 /*.mc-bmrk-pin{*/
 /*z-index: 100;*/
 /*}*/
@@ -114,7 +114,7 @@
 .bottom .control .control-right li.control-fullscreen-on {display:block !important;}
 .bottom .control .control-right li.control-caption {display:block !important;}
 .bottom .control .control-right li.control-bookmark {display:block !important;}
-.bottom .control .control-right li.control-config {display:block !important;}
+/*.bottom .control .control-right li.control-config {display:block !important;}*/
 .bottom .control .control-right li.control-repeat {display:block !important;}
 .bottom .control .control-right li.control-speed {display:block !important;}
 
@@ -168,10 +168,10 @@
 }
 
 .bottom .config .container .title-sub {
-    width: 160px;
+    width: 120px;
     height: 30px;
-    /*margin-top: 12px;*/
-    /*margin-left: 12px;*/
+    margin-top: 12px;
+    margin-left: 12px;
     background: url('../_images/pc/control-prev.png') no-repeat left center;
     color: #ffffff;
     text-align: center;
@@ -186,6 +186,95 @@
     /*float: left;*/
     display: none;
 }
-.mc-bmrk-next, .mc-bmrk-prev{
+.mc-bmrk-next, .mc-bmrk-prev, .mc-show-shortcut, .mc-setting-menu{
     cursor: pointer;
+}
+.bottom .control .control-right li.control-speed {
+    width: 61px;
+    color: #ffffff;
+    text-align: center;
+    margin-right: -14px;
+    height: 86px;
+    cursor: pointer;
+    line-height: 6;
+    margin-top: -38px;
+    overflow: hidden;
+}
+.mc-speed-out, .mc-speed-view{
+    cursor: pointer;
+}
+.bottom .control .control-right li{
+    position: absolute;
+    width: 20px;
+    bottom: -50px;
+    height: 50px;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    line-height: 6;
+    overflow: hidden;
+     margin-left: 0px;
+}
+.bottom .control .control-right li.control-config {
+    height: 86px;
+    width: 35px;
+
+    right: 31px;
+
+    background: url(../_images/pc/control-config.png) center 78% no-repeat;
+
+
+}
+.bottom .control .control-right li.control-fullscreen {
+    right: 5px
+}
+
+.bottom .control .control-right li.control-repeat {
+    right: 74px;
+}
+.bottom .control .control-right li.control-bookmark {
+
+    right: 111px;
+}
+.bottom .control .control-right li.control-caption {
+
+    right: 148px;
+}
+.bottom .control .control-right li.control-speed{
+    width: 55px;
+    height: 86px;
+    right: 185px;
+}
+
+.bottom .config .container{
+    min-height: 200px;
+}
+/*.bottom .control .control-right li.control-fullscreen-off {*/
+    /*width: 20px;*/
+    /*background: url(../_images/pc/control-fullscreen-off.png) center center no-repeat;*/
+    /*cursor: pointer;*/
+/*}*/
+/*.bottom .config .container {*/
+    /*width: 140px;*/
+    /*min-height: 210px;*/
+    /*background: url(../_images/pc/back_popup.png);*/
+    /*font-size: 12px;*/
+    /*bottom: 20px;*/
+    /*right: 0;*/
+    /*position: absolute;*/
+/*}*/
+@media (max-width:740px) {
+    .bottom .control .control-center {display: none;}
+    .bottom .control .control-center li.control-volume-on {display:none;}
+    .bottom .control .time {display:none;}
+}
+
+@media (max-width:360px) {
+    .bottom .control .control-center {display: none;}
+    .bottom .control .control-center li.control-volume-on {display:none;}
+    .bottom .control .time {display:none;}
+}
+
+.mc-guide-txt, .mc-guide-bmrk{
+    text-align: center;
 }

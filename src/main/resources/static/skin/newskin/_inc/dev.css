@@ -168,10 +168,10 @@
 }
 
 .bottom .config .container .title-sub {
-    width: 160px;
+    width: 120px;
     height: 30px;
-    /*margin-top: 12px;*/
-    /*margin-left: 12px;*/
+    margin-top: 12px !important;
+    margin-left: 12px !important;;
     background: url('../_images/pc/control-prev.png') no-repeat left center;
     color: #ffffff;
     text-align: center;
@@ -186,6 +186,12 @@
     /*float: left;*/
     display: none;
 }
-.mc-bmrk-next, .mc-bmrk-prev{
+.mc-bmrk-next, .mc-bmrk-prev, .mc-show-shortcut{
     cursor: pointer;
+}
+.bottom .control .control-right li.control-config {
+
+
+
+
 }

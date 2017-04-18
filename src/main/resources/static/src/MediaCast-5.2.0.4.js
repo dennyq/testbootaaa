@@ -78,8 +78,8 @@ var __player_hls_live = false;
 //-----------------------------------------------------------------------------
 // Keyboard 제어
 //-----------------------------------------------------------------------------
-//window.addEventListener("keydown", checkKeyPressed, false);
-$(window).keydown(checkKeyPressed);
+window.addEventListener("keydown", checkKeyPressed, false);
+//$(window).keydown(checkKeyPressed);
 var videoTagDocument;
 
 
@@ -104,7 +104,11 @@ function checkKeyPressed(e, req) {
 	 * 7. 전체화면		: fullscreen	|: enter		: 13
 	 */
 
+	console.log('req : '+req);
+	console.log('e : '+ e.keyCode);
+
 	if(!req) return;
+
 
 	player_skin.parentKeyPressed(e, req);
 
@@ -114,6 +118,17 @@ function checkKeyPressed(e, req) {
 
 }
 
+//function exitFullscreen() {
+//	if(document.exitFullscreen) {
+//		document.exitFullscreen();
+//	} else if(document.mozCancelFullScreen) {
+//		document.mozCancelFullScreen();
+//	} else if(document.webkitExitFullscreen) {
+//		document.webkitExitFullscreen();
+//	}
+//	player_skin.mcFullscreenCancel();
+//	player_skin.mcFullscreenCancelWithUI();
+//}
 //todo : setCookieSetting
 function setCookieSetting(useCookie) {
 	console.log('useCookie : ' + useCookie);
