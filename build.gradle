@@ -40,13 +40,13 @@ targetCompatibility = 1.8
 
 //3. jar setting
 jar {
-    baseName = 'provider'
+    baseName = 'kendo'
     version =  '0.0.1-SNAPSHOT'
 }
 
 //4-0. 여러 task에서 사용할 수 있도록 build file 이름은 전역변수로 지정
 project.ext{
-    warBaseName = 'provider'
+    warBaseName = 'kendo'
     warVersion = '0.0.1-'+ new Date().format('yyyyMMdd-HHmmss')
 }
 
@@ -93,7 +93,7 @@ dependencies {
     compile('commons-io:commons-io:2.5')
     compile('commons-httpclient:commons-httpclient:3.1')
     compile('com.google.code.gson:gson:2.3.1')
-//    compile("org.springframework.boot:spring-boot-devtools")
+    compile("org.springframework.boot:spring-boot-devtools")
     compile('org.springframework:springloaded:1.2.5.RELEASE') //추가하여 javaagent 옵션 추가시 위치 가져옴 변경
     testCompile("org.springframework.boot:spring-boot-starter-test")
 

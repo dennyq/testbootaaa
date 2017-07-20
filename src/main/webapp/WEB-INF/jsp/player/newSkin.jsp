@@ -7,6 +7,7 @@
     String mediaServer = "192.168.0.25";
 //    String mediaServer = "auth.mediacast.co.kr";
     String userId = "user1";
+    String autoplay = "N";
     String srcPath = "mov/demo.mp4";
     String token = GET_WEBTOKEN (mediaServer, userId, srcPath );
 
